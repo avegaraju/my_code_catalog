@@ -15,7 +15,7 @@ categories: []
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>[gist https://gist.github.com/avegaraju/18a503c2351100ee5c3568efc8426f49/]</p>
+<p>{% gist 18a503c2351100ee5c3568efc8426f49 %}</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -71,7 +71,7 @@ categories: []
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>[gist https://gist.github.com/avegaraju/53dd6dc264b22ae4664983445e567312/]</p>
+<p>{% gist 53dd6dc264b22ae4664983445e567312 %}</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -83,7 +83,7 @@ categories: []
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>[gist https://gist.github.com/avegaraju/1e90438e3ae2c7aa8905977a751d74aa/]</p>
+<p>{% gist 1e90438e3ae2c7aa8905977a751d74aa %}</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -95,7 +95,7 @@ categories: []
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>[gist https://gist.github.com/avegaraju/d8c27b1a3b8ef64cb5549e89115e5fca/]</p>
+<p>{% gist d8c27b1a3b8ef64cb5549e89115e5fca %}</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -127,7 +127,7 @@ categories: []
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>[gist https://gist.github.com/avegaraju/e27a7abe2645023078015666fdf07b49 /]</p>
+<p>{% gist e27a7abe2645023078015666fdf07b49 %}</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -135,7 +135,7 @@ categories: []
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>[gist https://gist.github.com/avegaraju/03d60370b3d794575affc1e505975c0c /]</p>
+<p>{% gist 03d60370b3d794575affc1e505975c0c %}</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":4} -->
