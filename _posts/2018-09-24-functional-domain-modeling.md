@@ -2,7 +2,7 @@
 layout: post
 title: Functional Domain Modeling
 date: 2018-09-24 23:02
-author: avegaraju
+author: Ashish Vegaraju
 comments: true
 categories: []
 ---

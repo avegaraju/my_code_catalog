@@ -2,7 +2,7 @@
 layout: post
 title: Function Purity in F#
 date: 2018-12-24 23:44
-author: avegaraju
+author: Ashish Vegaraju
 comments: true
 categories: []
 ---
