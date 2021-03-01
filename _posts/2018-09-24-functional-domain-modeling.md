@@ -4,7 +4,7 @@ title: Functional Domain Modeling
 date: 2018-09-24 23:02
 author: avegaraju
 comments: true
-categories: [Uncategorized]
+categories: []
 ---
 <p style="text-align:justify;" data-mce-style="text-align: justify;">Lately, I've been reading about functional paradigm and related programming languages. More I read about it, more I feel that modeling domains in pure C# (or Java for that matter) is <em>unnatural</em> and does not communicate the intent of the domain clearly.</p>
 <p style="text-align:justify;" data-mce-style="text-align: justify;">After so many years of writing C# code, that's quite a statement to make. But, I am serious. Lets model a simple subdomain <strong>Order</strong> for a hypothetical e-commerce company using F# then later using C# and see which of the models looks more expressive.</p>
