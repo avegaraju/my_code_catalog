@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Functional Domain Modeling | My code catalog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Functional Domain Modeling" />
+<meta name="author" content="Ashish Vegaraju" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Lately, I&#39;ve been reading about functional paradigm and related programming languages. More I read about it, more I feel that modeling domains in pure C# (or Java for that matter) is unnatural and does not communicate the intent of the domain clearly. After so many years of writing C# code, that&#39;s quite a statement to make. But, I am serious. Lets model a simple subdomain Order for a hypothetical e-commerce company using F# then later using C# and see which of the models looks more expressive. Lets start with C# first. Below is a typical Order entity with some typical properties. 400: Invalid request (For brevity, I have removed other properties &amp; methods which add behavior to this model.) At first glance, this model looks decent. Technically, it has all the properties required to represent an&nbsp;​​Order. It uses ubiquitous language for modeling the domain, it uses strong types to represent attributes of an order (so, the smell of primitive obsession is also taken care of). The properties expose only public getters, so state change (if we choose to do so) is only possible via public methods. But, does this model document the design of Order subdomain? Can a developer look at this model and understand what are the business constraints in this sub-domain? The answer is No. Let&#39;s examine this model closely to see why. Lack of Choice The PaymentMethod property is of type IPaymentMethod. Typically, this interface would be implemented by concrete payment method classes like ​CashOnDelivery, CreditCard Paypal etc. But, this property does not scream about all the supported payment methods of the order sub-domain. Of course, I can always see what are the types implementing IPaymentMethod interface, but, its well.. ehm... unnatural ...(you will see why when we examine the F# model). In short, the payments methods are not explicitly documented in the model. Another problem with having an interface is that it does not allow the domain modeler to make the property hold different types (or combination of types) of values depending on a particular payment method. For instance, in case of CreditCard, I would like the property to hold Card number and CardType information, if the payment method is PayPal then the property should hold the paypal Id etc. Another problem, though minor, is that we do not know if we are dealing with a closed set of payment methods. What if an innocent developer makes an innocent mistake and adds MyAwesomePaymentMethod as another implementation of IPaymentMethod. So, now Order is secretly supporting a new payment method and no one (include the innocent developer) has a clue about it. Here comes F# for the rescue. F# has discriminated unions. In other words a choice type, which, if used, unambiguously documents about the only three supported payment methods available. In other words, its a closed set of payment methods. Below is how the PaymentMethod type would be modeled in F#. Looking at this file, one can see the complete spec of PaymentMethod type." />
+<meta property="og:description" content="Lately, I&#39;ve been reading about functional paradigm and related programming languages. More I read about it, more I feel that modeling domains in pure C# (or Java for that matter) is unnatural and does not communicate the intent of the domain clearly. After so many years of writing C# code, that&#39;s quite a statement to make. But, I am serious. Lets model a simple subdomain Order for a hypothetical e-commerce company using F# then later using C# and see which of the models looks more expressive. Lets start with C# first. Below is a typical Order entity with some typical properties. 400: Invalid request (For brevity, I have removed other properties &amp; methods which add behavior to this model.) At first glance, this model looks decent. Technically, it has all the properties required to represent an&nbsp;​​Order. It uses ubiquitous language for modeling the domain, it uses strong types to represent attributes of an order (so, the smell of primitive obsession is also taken care of). The properties expose only public getters, so state change (if we choose to do so) is only possible via public methods. But, does this model document the design of Order subdomain? Can a developer look at this model and understand what are the business constraints in this sub-domain? The answer is No. Let&#39;s examine this model closely to see why. Lack of Choice The PaymentMethod property is of type IPaymentMethod. Typically, this interface would be implemented by concrete payment method classes like ​CashOnDelivery, CreditCard Paypal etc. But, this property does not scream about all the supported payment methods of the order sub-domain. Of course, I can always see what are the types implementing IPaymentMethod interface, but, its well.. ehm... unnatural ...(you will see why when we examine the F# model). In short, the payments methods are not explicitly documented in the model. Another problem with having an interface is that it does not allow the domain modeler to make the property hold different types (or combination of types) of values depending on a particular payment method. For instance, in case of CreditCard, I would like the property to hold Card number and CardType information, if the payment method is PayPal then the property should hold the paypal Id etc. Another problem, though minor, is that we do not know if we are dealing with a closed set of payment methods. What if an innocent developer makes an innocent mistake and adds MyAwesomePaymentMethod as another implementation of IPaymentMethod. So, now Order is secretly supporting a new payment method and no one (include the innocent developer) has a clue about it. Here comes F# for the rescue. F# has discriminated unions. In other words a choice type, which, if used, unambiguously documents about the only three supported payment methods available. In other words, its a closed set of payment methods. Below is how the PaymentMethod type would be modeled in F#. Looking at this file, one can see the complete spec of PaymentMethod type." />
+<link rel="canonical" href="/2018/09/24/functional-domain-modeling/" />
+<meta property="og:url" content="/2018/09/24/functional-domain-modeling/" />
+<meta property="og:site_name" content="My code catalog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-09-24T23:02:00+02:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Functional Domain Modeling" />
+<script type="application/ld+json">
+{"headline":"Functional Domain Modeling","dateModified":"2018-09-24T23:02:00+02:00","datePublished":"2018-09-24T23:02:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"/2018/09/24/functional-domain-modeling/"},"@type":"BlogPosting","url":"/2018/09/24/functional-domain-modeling/","author":{"@type":"Person","name":"Ashish Vegaraju"},"description":"Lately, I&#39;ve been reading about functional paradigm and related programming languages. More I read about it, more I feel that modeling domains in pure C# (or Java for that matter) is unnatural and does not communicate the intent of the domain clearly. After so many years of writing C# code, that&#39;s quite a statement to make. But, I am serious. Lets model a simple subdomain Order for a hypothetical e-commerce company using F# then later using C# and see which of the models looks more expressive. Lets start with C# first. Below is a typical Order entity with some typical properties. 400: Invalid request (For brevity, I have removed other properties &amp; methods which add behavior to this model.) At first glance, this model looks decent. Technically, it has all the properties required to represent an&nbsp;​​Order. It uses ubiquitous language for modeling the domain, it uses strong types to represent attributes of an order (so, the smell of primitive obsession is also taken care of). The properties expose only public getters, so state change (if we choose to do so) is only possible via public methods. But, does this model document the design of Order subdomain? Can a developer look at this model and understand what are the business constraints in this sub-domain? The answer is No. Let&#39;s examine this model closely to see why. Lack of Choice The PaymentMethod property is of type IPaymentMethod. Typically, this interface would be implemented by concrete payment method classes like ​CashOnDelivery, CreditCard Paypal etc. But, this property does not scream about all the supported payment methods of the order sub-domain. Of course, I can always see what are the types implementing IPaymentMethod interface, but, its well.. ehm... unnatural ...(you will see why when we examine the F# model). In short, the payments methods are not explicitly documented in the model. Another problem with having an interface is that it does not allow the domain modeler to make the property hold different types (or combination of types) of values depending on a particular payment method. For instance, in case of CreditCard, I would like the property to hold Card number and CardType information, if the payment method is PayPal then the property should hold the paypal Id etc. Another problem, though minor, is that we do not know if we are dealing with a closed set of payment methods. What if an innocent developer makes an innocent mistake and adds MyAwesomePaymentMethod as another implementation of IPaymentMethod. So, now Order is secretly supporting a new payment method and no one (include the innocent developer) has a clue about it. Here comes F# for the rescue. F# has discriminated unions. In other words a choice type, which, if used, unambiguously documents about the only three supported payment methods available. In other words, its a closed set of payment methods. Below is how the PaymentMethod type would be modeled in F#. Looking at this file, one can see the complete spec of PaymentMethod type.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="My code catalog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">My code catalog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Functional Domain Modeling</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-09-24T23:02:00+02:00" itemprop="datePublished">Sep 24, 2018
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Ashish Vegaraju</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p style="text-align:justify;" data-mce-style="text-align: justify;">Lately, I've been reading about functional paradigm and related programming languages. More I read about it, more I feel that modeling domains in pure C# (or Java for that matter) is <em>unnatural</em> and does not communicate the intent of the domain clearly.</p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;">After so many years of writing C# code, that's quite a statement to make. But, I am serious. Lets model a simple subdomain <strong>Order</strong> for a hypothetical e-commerce company using F# then later using C# and see which of the models looks more expressive.</p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;">Lets start with C# first. Below is a typical <code>Order</code> entity with some typical properties.</p>
+<noscript><pre>400: Invalid request</pre></noscript>
+<script src="https://gist.github.com/a0738e33f449f4fda4c11328293b5c95.js"> </script>
+
+<p style="text-align:justify;" data-mce-style="text-align: justify;"><em>(For brevity, I have removed other properties &amp; methods which add behavior to this model.)</em></p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;">At first glance, this model looks decent. <em>Technically,</em> it has all the properties required to represent an&nbsp;<code>​​Order</code>. It uses <a href="https://martinfowler.com/bliki/UbiquitousLanguage.html" data-mce-href="https://martinfowler.com/bliki/UbiquitousLanguage.html">ubiquitous language</a> for modeling the domain, it uses strong types to represent attributes of an order (so, the smell of <a href="http://wiki.c2.com/?PrimitiveObsession" target="_blank" rel="noopener" data-mce-href="http://wiki.c2.com/?PrimitiveObsession">primitive obsession</a> is also taken care of). The properties expose only public getters, so state change (if we choose to do so) is only possible via public methods. But, does this model document the design of Order subdomain? Can a developer look at this model and understand what are the business constraints in this sub-domain? The answer is No. Let's examine this model closely to see why.</p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;"><strong>Lack of <em>Choice</em></strong></p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;">The <code>PaymentMethod</code> property is of type <code>IPaymentMethod</code>. Typically, this interface would be implemented by concrete payment method classes like <code>​CashOnDelivery</code>, <code>CreditCard</code> <code>Paypal</code> etc. But, this property does not <em>scream</em> about all the supported payment methods of the order sub-domain.</p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;">Of course, I can always see what are the types implementing <code>IPaymentMethod</code> interface, but, its well.. ehm... <em>unnatural</em> ...(you will see why when we examine the F# model). In short, the payments methods are not explicitly documented <em>in the</em> <em>model</em>. Another problem with having an interface is that it does not allow the domain modeler to make the property hold different <em>types (or combination of types)</em> of values depending on a particular payment method. For instance, in case of CreditCard, I would like the property to hold Card number <em>and</em> CardType information, if the payment method is PayPal then the property should hold the paypal Id etc.</p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;">Another problem, though minor, is that we do not know if we are dealing with a closed set of payment methods. What if an innocent developer makes an <em>innocent</em> mistake and adds <code>MyAwesomePaymentMethod</code> as another implementation of <code>IPaymentMethod</code>. So, now <code>Order</code> is secretly supporting a new payment method and no one (include the innocent developer) has a clue about it.</p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;">Here comes F# for the rescue. F# has discriminated unions. In other words a <em><strong>choice type,</strong></em> which, if used, unambiguously documents about the only three supported payment methods available. In other words, its a <em>closed set</em> of payment methods. Below is how the <code>PaymentMethod</code> type would be modeled in F#. Looking at this file, one can see the complete spec of <code>PaymentMethod</code> type.</p>
+<p><em>
+</em></p>
+
+<noscript><pre>400: Invalid request</pre></noscript>
+<script src="https://gist.github.com/bfae189f33aad1cd24498df4230eb521.js"> </script>
+
+<p>If I want to print a payment method (Of course, I wouldn’t from a domain model, perhaps I would execute a function for each <em>matched</em> payment method), I can <em>pattern match</em> and print (or do something more useful) in here.</p>
+
+<noscript><pre>400: Invalid request</pre></noscript>
+<script src="https://gist.github.com/f5c6040682597f7535eba60962a62ea8.js"> </script>
+
+<p style="text-align:justify;" data-mce-style="text-align: justify;">Notice how pattern matching allows us to return different information depending on&nbsp; the <em>choice</em> of payment method. In case of Paypal, I can use the PaypalId. Similarly, in case of <code>Card</code> payment, I can use the card number and card type.</p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;">Coming back to C#, I can use pattern matching and try to mimic the F# <em>choice type</em> behavior. But its ugly and convoluted (IDK why I am even mentioning it here :D ).</p>
+<noscript><pre>400: Invalid request</pre></noscript>
+<script src="https://gist.github.com/d53bccf85e229197c021c854b9b52437.js"> </script>
+
+<p><strong>Stuck without <em>Option</em></strong></p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;">Let's take a good look at the C# domain model once again. Can you infer which properties are required and which are optional? Typically, an order may or may not have a discount code which makes the property <code>DiscountCode</code> optional. But, the C# model fails to document that constraint. You may argue that <code>DiscountCode</code> could be made <code>nullable</code> and then all is good. But, is <code>null</code> equivalent to <em>not having</em> a discount code?</p>
+<p>In F#, we can use <code>​Option&lt;'a&gt;</code> to denote an optional field as shown here:</p>
+
+<noscript><pre>400: Invalid request</pre></noscript>
+<script src="https://gist.github.com/b296ebfa02ef75274e9409eeca9c4a3a.js"> </script>
+
+<p style="text-align:justify;" data-mce-style="text-align: justify;">This is a self documenting domain model. By looking at it I know that an order may or may not have <code>DiscountCode</code>.</p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;">Luckily, <a href="https://github.com/louthy/language-ext" target="_blank" rel="noopener" data-mce-href="https://github.com/louthy/language-ext">Language Ext</a> package allows us to do this in C#. The <code>Order</code> model in C# (using Language Ext) now looks like this:</p>
+<noscript><pre>400: Invalid request</pre></noscript>
+<script src="https://gist.github.com/252c9d48dbb459594054edc01420786b.js"> </script>
+
+<p style="text-align:justify;" data-mce-style="text-align: justify;">Much better!</p>
+<p>As mentioned, an <code>​Option</code> may or may not have a value. This is denoted with <code>​Some</code> or​ <code>None</code> respectively. Below is how one can inspect / match an <code>Option</code> to see if it contains a <code>Some</code> or a <code>None</code><em>.</em></p>
+
+<p><em>
+</em></p>
+
+<noscript><pre>400: Invalid request</pre></noscript>
+<script src="https://gist.github.com/eef9b73057ef1a9cdfc9708dfbf9ae5f.js"> </script>
+
+<p style="text-align:justify;" data-mce-style="text-align: justify;">That's a short one on why I feel that functional languages are naturally good for modeling domains as they make domain models expressive and self documenting. I am still experimenting with a couple of functional languages and so far I can see clear benefits of functional languages over imperative languages when it comes to developing a project with domain driven design.</p>
+<p style="text-align:justify;" data-mce-style="text-align: justify;">I am not sure how easy or painful it is to access database or perform I/O with a functional language. I would probably run into it at some point. Do share your experiences (good and /or painful) with functional languages under comments and Thanks for reading!</p>
+
+  </div><a class="u-url" href="/2018/09/24/functional-domain-modeling/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">My code catalog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">My code catalog</li><li><a class="u-email" href="mailto:avegaraju@gmail.com">avegaraju@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/avegaraju"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">avegaraju</span></a></li><li><a href="https://www.twitter.com/ashishvegaraju"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">ashishvegaraju</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>test.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
