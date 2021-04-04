@@ -1,36 +1,150 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-21T01:51:30+01:00</updated><id>/feed.xml</id><title type="html">My code catalog</title><subtitle>test.</subtitle><entry><title type="html">Welcome to Jekyll!</title><link href="/2021/02/25/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2021-02-25T22:48:02+01:00</published><updated>2021-02-25T22:48:02+01:00</updated><id>/2021/02/25/welcome-to-jekyll</id><content type="html" xml:base="/2021/02/25/welcome-to-jekyll/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-04-04T23:23:15+02:00</updated><id>/feed.xml</id><title type="html">My code catalog</title><subtitle>test.</subtitle><entry><title type="html">Test doubles ; Over the wire</title><link href="/2019/03/01/test-doubles-over-the-wire/" rel="alternate" type="text/html" title="Test doubles ; Over the wire" /><published>2019-03-01T00:09:00+01:00</published><updated>2019-03-01T00:09:00+01:00</updated><id>/2019/03/01/test-doubles-over-the-wire</id><content type="html" xml:base="/2019/03/01/test-doubles-over-the-wire/">&lt;!-- wp:paragraph {&quot;customFontSize&quot;:12} --&gt;
+&lt;p style=&quot;font-size:12px;&quot;&gt;&lt;strong&gt;Please note&lt;/strong&gt;: If the code snippets in this article are not visible on your mobile browser then try to view this article with &lt;em&gt;Desktop site&lt;/em&gt; option enabled.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
 
-&lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
+&lt;!-- wp:paragraph {&quot;dropCap&quot;:true} --&gt;
+&lt;p class=&quot;has-drop-cap&quot;&gt;Developing microservices is complex and testing its integration is even  more complex. Assuring availability of all the inter-dependent services with up-to-date builds in the test environment is quite a tedious &amp;amp; costly setup to maintain. Stubs and mocks on the other hand are cheap, easily maintainable and they make integration tests predictable and repeatable. &lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YEAR-MONTH-DAY-title.MARKUP&lt;/code&gt;&lt;/p&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Almost two years ago, we faced a problem at work where we were desperately looking for a solution to test multiple Web API interactions with an external system over HTTP. In short, we wanted a hassle free mechanism to stub and verify invocation of an external service. &lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
 
-&lt;p&gt;Where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YEAR&lt;/code&gt; is a four-digit number, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MONTH&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DAY&lt;/code&gt; are both two-digit numbers, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MARKUP&lt;/code&gt; is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;We researched and came across &lt;a href=&quot;http://www.mbtest.org/&quot;&gt;Mountebank&lt;/a&gt;, which was not only painful to configure, but was error prone too. To top it all off, configuring dynamic behavior required enabling javascript injection. No points for guessing, the security team of my company outrightly rejected the request to enable javascript injection on any of our servers. Not to mention, no clean way to deploy and integrate it with our CI/CD pipelines. Later, due to various constraints, we decided to spend our time on delivering new features instead of solving this problem. &lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Feeling dejected, I started &lt;a href=&quot;https://github.com/avegaraju/Imposter&quot;&gt;imposter&lt;/a&gt; project in my free time with an intent to develop a simple, developer friendly stubbing and mocking mechanism. The project is now in a decent enough state to deserve a blog article.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Without further ado, in this article I will demonstrate how to create and configure stubs &amp;amp; mocks using the &lt;a href=&quot;https://github.com/avegaraju/Imposter&quot;&gt;imposter&lt;/a&gt; project. Let's begin with configuring and creating stubs.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="/2020/09/21/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2020-09-21T01:43:10+02:00</published><updated>2020-09-21T01:43:10+02:00</updated><id>/2020/09/21/welcome-to-jekyll</id><content type="html" xml:base="/2020/09/21/welcome-to-jekyll/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;!-- wp:heading {&quot;level&quot;:3} --&gt;
+&lt;h3&gt;Configuring &amp;amp; creating stubs&lt;/h3&gt;
+&lt;!-- /wp:heading --&gt;
 
-&lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;To configure a stub, you need to reference &lt;a href=&quot;https://www.nuget.org/packages/Appify.FluentImposter.AspnetCore/&quot;&gt;FluentImposter.AspNetCore package&lt;/a&gt;. This package contains an ASP.Net middleware &lt;code&gt;UseStubImposters&lt;/code&gt;, to configure stubs. All you need to do is to configure it in the &lt;code&gt;Startup.cs&lt;/code&gt; as shown below:&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YEAR-MONTH-DAY-title.MARKUP&lt;/code&gt;&lt;/p&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;noscript&gt;&lt;pre&gt;400: Invalid request&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/2e0e4c12d21a0a15d706fc6b0a514161.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
 
-&lt;p&gt;Where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YEAR&lt;/code&gt; is a four-digit number, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MONTH&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DAY&lt;/code&gt; are both two-digit numbers, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MARKUP&lt;/code&gt; is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;code&gt;ImpostersAsStubConfiguration&lt;/code&gt;, as the name suggests, accepts a list of imposters-as-stubs. These imposters are hosted as REST endpoints by the middleware. To demonstrate, let's create an imposter which will stub the &lt;code&gt;Orders&lt;/code&gt; REST endpoint. &lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;noscript&gt;&lt;pre&gt;400: Invalid request&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/505104b11cb45fda1bd0e7dca0b68f48.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Being a fan of fluent APIs, I made the &lt;code&gt;ImposterDefinition&lt;/code&gt; fluent. I like the idea of an API guiding me about the next steps. To begin with, it guides to define a resource to be stubbed, followed by a set of conditions that must match for the imposter to accept a request and respond with a canned response.  In this example, if the request body contains &lt;code&gt;Product:1234&lt;/code&gt; then  this imposter will return a pre-configured response.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Function Purity in F#</title><link href="/2018/12/24/function-purity-in-f/" rel="alternate" type="text/html" title="Function Purity in F#" /><published>2018-12-24T23:44:00+01:00</published><updated>2018-12-24T23:44:00+01:00</updated><id>/2018/12/24/function-purity-in-f</id><content type="html" xml:base="/2018/12/24/function-purity-in-f/">&lt;!-- wp:paragraph --&gt;
+&lt;!-- wp:heading {&quot;level&quot;:4} --&gt;
+&lt;h4&gt;Creating Pre-configured responses.&lt;/h4&gt;
+&lt;!-- /wp:heading --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;The &lt;code&gt;ResponseBuilder&lt;/code&gt; helps to build the canned response. The code is pretty straight forward. &lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;noscript&gt;&lt;pre&gt;400: Invalid request&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/9c71b7d3b946211332bc51220b67737b.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;As shown in the below POSTMan screenshot, the &lt;code&gt;Orders&lt;/code&gt; imposter endpoint is responding with a preconfigured response and a &lt;code&gt;Created (201)&lt;/code&gt; status code because the request body has the content &lt;code&gt;Product:1234&lt;/code&gt;. &lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:image {&quot;id&quot;:676} --&gt;
+&lt;figure class=&quot;wp-block-image&quot;&gt;&lt;img src=&quot;https://ashishvegaraju.files.wordpress.com/2019/02/image.png&quot; alt=&quot;&quot; class=&quot;wp-image-676&quot; /&gt;&lt;figcaption&gt;The screen shot is of PostMan invoking Orders imposter and receiving a pre-configured response.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;!-- /wp:image --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Let's move on to configure and create an imposter as a mock.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:3} --&gt;
+&lt;h3&gt;Configuring &amp;amp; creating mocks&lt;/h3&gt;
+&lt;!-- /wp:heading --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;The same package&lt;a href=&quot;https://www.nuget.org/packages/Appify.FluentImposter.AspnetCore/&quot;&gt;&amp;nbsp;FluentImposter.AspNetCore package&lt;/a&gt;  has another middleware &lt;code&gt;UseMockImposters&lt;/code&gt;, which is capable of configure and hosting mocks. Example shown below:&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;noscript&gt;&lt;pre&gt;400: Invalid request&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/02cf07d5aa9fa748e009e99dbfc44bd6.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Mocking requires invocation verification, hence a backing store is needed to keep the count of REST endpoint invocations. At the time of writing this article, I've only added support for &lt;a href=&quot;https://aws.amazon.com/dynamodb/&quot;&gt;Amazon DynamoDb&lt;/a&gt; as a backing store which can be enable by adding   &lt;br /&gt;&lt;a href=&quot;https://www.nuget.org/packages/Appify.FluentImposter.DataStore.AwsDynamoDb/&quot;&gt;Appify.FluentImposter.DataStore.AwsDynamoDb&lt;/a&gt; Nuget package in your project. In case you do not have an Amazon AWS account, you can work with &lt;a href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html&quot;&gt;local DynamoDb installation&lt;/a&gt; as well. But be aware that local DynamoDb, as the name suggests, is good for local testing and not recommended for production use. &lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Below is how you can create a MocksDatStore which connects to local DynamoDb installation.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;noscript&gt;&lt;pre&gt;400: Invalid request&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/8c050b7fafdd808e515be8355cc92c10.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;I wouldn't go into the details of this datastore. All that the &lt;code&gt;MocksDataStore&lt;/code&gt; should do is to return &lt;code&gt;AwsDynamoDbDataStore&lt;/code&gt; instance which does all the magic of maintaining request invocations.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;The next step is to create Imposters for the REST endpoints. To demonstrate, lets create a mock for &lt;code&gt;api/Products&lt;/code&gt; endpoint.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;noscript&gt;&lt;pre&gt;400: Invalid request&lt;/pre&gt;&lt;/noscript&gt;&lt;script src=&quot;https://gist.github.com/90378aac89406d5d6023a60635916969.js&quot;&gt; &lt;/script&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Let's spin up POSTMan and invoke &lt;code&gt;api/Products&lt;/code&gt; endpoint.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;As shown in the screen shot, the imposter responded with a canned response.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:image {&quot;id&quot;:688} --&gt;
+&lt;figure class=&quot;wp-block-image&quot;&gt;&lt;img src=&quot;https://ashishvegaraju.files.wordpress.com/2019/02/image-2.png&quot; alt=&quot;&quot; class=&quot;wp-image-688&quot; /&gt;&lt;figcaption&gt;POSTMan screenshot of invoking api/Products endpoint.&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;!-- /wp:image --&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:4} --&gt;
+&lt;h4&gt;Mock verification&lt;/h4&gt;
+&lt;!-- /wp:heading --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;The &lt;code&gt;UseMockImposters&lt;/code&gt; middleware hosts a mock verification endpoint with resource path &lt;code&gt;mocks/verify&lt;/code&gt; accepting Http GET requests. The request body should contain the details of the REST endpoint for which invocation verification has to be done.  Below is how the invocation verification for &lt;code&gt;api/Products&lt;/code&gt; endpoint can be done using POSTMan&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:image {&quot;id&quot;:689} --&gt;
+&lt;figure class=&quot;wp-block-image&quot;&gt;&lt;img src=&quot;https://ashishvegaraju.files.wordpress.com/2019/02/image-3.png&quot; alt=&quot;&quot; class=&quot;wp-image-689&quot; /&gt;&lt;figcaption&gt;Verification of invocation using POSTMan&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;!-- /wp:image --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;The mock verification endpoint responds back with the resource invoked along with the total number of invocations so far. &lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:3} --&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;!-- /wp:heading --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Thanks for reading. I am actively working on this project from last few months and planning to support more protocols. If you have any suggestion or improvements for the project then do let me know via comments. If you want to contribute then feel free to create pull requests in &lt;a href=&quot;https://github.com/avegaraju/Imposter&quot;&gt;github&lt;/a&gt;. &lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;</content><author><name>avegaraju</name></author><category term="fakes" /><category term="integration testing" /><category term="Microservice testing" /><category term="mocks" /><category term="stubs" /><category term="test doubles over the wire" /><category term="test driven development" /><summary type="html">Please note: If the code snippets in this article are not visible on your mobile browser then try to view this article with Desktop site option enabled.</summary></entry><entry><title type="html">Function Purity in F#</title><link href="/2018/12/24/function-purity-in-f/" rel="alternate" type="text/html" title="Function Purity in F#" /><published>2018-12-24T23:44:00+01:00</published><updated>2018-12-24T23:44:00+01:00</updated><id>/2018/12/24/function-purity-in-f</id><content type="html" xml:base="/2018/12/24/function-purity-in-f/">&lt;!-- wp:paragraph --&gt;
 &lt;p&gt;In my last article about &lt;a href=&quot;https://ashishvegaraju.com/2018/09/24/functional-domain-modeling/&quot;&gt;Functional domain modeling&lt;/a&gt;, I explored the expressiveness of F# in modeling a domain. I fell in love with the simplicity and expressiveness of the language. In this article I will attempt to explore function purity in F#. In F#, functions are first class citizens because it allows to pass function as an argument to other function, return a function or assign function to a variable. Initially I found it a bit hard to wrap my head around the concept of treating functions as first class citizens. In fact one of the biggest challenge for me was surprisingly not the weird syntax of F#, but to think in terms of functions.&lt;/p&gt;
 &lt;!-- /wp:paragraph --&gt;
 
@@ -231,4 +345,749 @@
 &lt;script src=&quot;https://gist.github.com/eef9b73057ef1a9cdfc9708dfbf9ae5f.js&quot;&gt; &lt;/script&gt;
 
 &lt;p style=&quot;text-align:justify;&quot; data-mce-style=&quot;text-align: justify;&quot;&gt;That's a short one on why I feel that functional languages are naturally good for modeling domains as they make domain models expressive and self documenting. I am still experimenting with a couple of functional languages and so far I can see clear benefits of functional languages over imperative languages when it comes to developing a project with domain driven design.&lt;/p&gt;
-&lt;p style=&quot;text-align:justify;&quot; data-mce-style=&quot;text-align: justify;&quot;&gt;I am not sure how easy or painful it is to access database or perform I/O with a functional language. I would probably run into it at some point. Do share your experiences (good and /or painful) with functional languages under comments and Thanks for reading!&lt;/p&gt;</content><author><name>Ashish Vegaraju</name></author><summary type="html">Lately, I've been reading about functional paradigm and related programming languages. More I read about it, more I feel that modeling domains in pure C# (or Java for that matter) is unnatural and does not communicate the intent of the domain clearly. After so many years of writing C# code, that's quite a statement to make. But, I am serious. Lets model a simple subdomain Order for a hypothetical e-commerce company using F# then later using C# and see which of the models looks more expressive. Lets start with C# first. Below is a typical Order entity with some typical properties. 400: Invalid request (For brevity, I have removed other properties &amp;amp; methods which add behavior to this model.) At first glance, this model looks decent. Technically, it has all the properties required to represent an&amp;nbsp;​​Order. It uses ubiquitous language for modeling the domain, it uses strong types to represent attributes of an order (so, the smell of primitive obsession is also taken care of). The properties expose only public getters, so state change (if we choose to do so) is only possible via public methods. But, does this model document the design of Order subdomain? Can a developer look at this model and understand what are the business constraints in this sub-domain? The answer is No. Let's examine this model closely to see why. Lack of Choice The PaymentMethod property is of type IPaymentMethod. Typically, this interface would be implemented by concrete payment method classes like ​CashOnDelivery, CreditCard Paypal etc. But, this property does not scream about all the supported payment methods of the order sub-domain. Of course, I can always see what are the types implementing IPaymentMethod interface, but, its well.. ehm... unnatural ...(you will see why when we examine the F# model). In short, the payments methods are not explicitly documented in the model. Another problem with having an interface is that it does not allow the domain modeler to make the property hold different types (or combination of types) of values depending on a particular payment method. For instance, in case of CreditCard, I would like the property to hold Card number and CardType information, if the payment method is PayPal then the property should hold the paypal Id etc. Another problem, though minor, is that we do not know if we are dealing with a closed set of payment methods. What if an innocent developer makes an innocent mistake and adds MyAwesomePaymentMethod as another implementation of IPaymentMethod. So, now Order is secretly supporting a new payment method and no one (include the innocent developer) has a clue about it. Here comes F# for the rescue. F# has discriminated unions. In other words a choice type, which, if used, unambiguously documents about the only three supported payment methods available. In other words, its a closed set of payment methods. Below is how the PaymentMethod type would be modeled in F#. Looking at this file, one can see the complete spec of PaymentMethod type.</summary></entry></feed>
+&lt;p style=&quot;text-align:justify;&quot; data-mce-style=&quot;text-align: justify;&quot;&gt;I am not sure how easy or painful it is to access database or perform I/O with a functional language. I would probably run into it at some point. Do share your experiences (good and /or painful) with functional languages under comments and Thanks for reading!&lt;/p&gt;</content><author><name>Ashish Vegaraju</name></author><summary type="html">Lately, I've been reading about functional paradigm and related programming languages. More I read about it, more I feel that modeling domains in pure C# (or Java for that matter) is unnatural and does not communicate the intent of the domain clearly. After so many years of writing C# code, that's quite a statement to make. But, I am serious. Lets model a simple subdomain Order for a hypothetical e-commerce company using F# then later using C# and see which of the models looks more expressive. Lets start with C# first. Below is a typical Order entity with some typical properties. 400: Invalid request (For brevity, I have removed other properties &amp;amp; methods which add behavior to this model.) At first glance, this model looks decent. Technically, it has all the properties required to represent an&amp;nbsp;​​Order. It uses ubiquitous language for modeling the domain, it uses strong types to represent attributes of an order (so, the smell of primitive obsession is also taken care of). The properties expose only public getters, so state change (if we choose to do so) is only possible via public methods. But, does this model document the design of Order subdomain? Can a developer look at this model and understand what are the business constraints in this sub-domain? The answer is No. Let's examine this model closely to see why. Lack of Choice The PaymentMethod property is of type IPaymentMethod. Typically, this interface would be implemented by concrete payment method classes like ​CashOnDelivery, CreditCard Paypal etc. But, this property does not scream about all the supported payment methods of the order sub-domain. Of course, I can always see what are the types implementing IPaymentMethod interface, but, its well.. ehm... unnatural ...(you will see why when we examine the F# model). In short, the payments methods are not explicitly documented in the model. Another problem with having an interface is that it does not allow the domain modeler to make the property hold different types (or combination of types) of values depending on a particular payment method. For instance, in case of CreditCard, I would like the property to hold Card number and CardType information, if the payment method is PayPal then the property should hold the paypal Id etc. Another problem, though minor, is that we do not know if we are dealing with a closed set of payment methods. What if an innocent developer makes an innocent mistake and adds MyAwesomePaymentMethod as another implementation of IPaymentMethod. So, now Order is secretly supporting a new payment method and no one (include the innocent developer) has a clue about it. Here comes F# for the rescue. F# has discriminated unions. In other words a choice type, which, if used, unambiguously documents about the only three supported payment methods available. In other words, its a closed set of payment methods. Below is how the PaymentMethod type would be modeled in F#. Looking at this file, one can see the complete spec of PaymentMethod type.</summary></entry><entry><title type="html">Test Driven Development with TypeScript</title><link href="/2016/10/31/test-driven-development-with-typescript/" rel="alternate" type="text/html" title="Test Driven Development with TypeScript" /><published>2016-10-31T00:05:00+01:00</published><updated>2016-10-31T00:05:00+01:00</updated><id>/2016/10/31/test-driven-development-with-typescript</id><content type="html" xml:base="/2016/10/31/test-driven-development-with-typescript/">&lt;p align=&quot;justify&quot;&gt;In this article, I will demonstrate how to write testable code using TypeScript. I assume that the reader is familiar with JavaScript, heard about Typescript and has done or secretly desires to do test driven development.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;There is an excellent &lt;a href=&quot;https://www.typescriptlang.org/docs/tutorial.html&quot;&gt;quick start guide&lt;/a&gt; on Typescript that I recommend you to go through before moving ahead.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h2&gt;&lt;strong&gt;Project Setup&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;I am writing the code in Visual Studio 2015 Update 2 (which already has the necessary ingredients to author TypeScript applications). You can also use Visual Studio Code for authoring web applications with TypeScript.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;1. Start Visual Studio and Create a new project. From the installed templates, select &lt;strong&gt;Html Application With TypeScript&lt;/strong&gt; template.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;&lt;a href=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/project_template.png&quot;&gt;&lt;img style=&quot;background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;&quot; title=&quot;Project_template&quot; src=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/project_template_thumb.png&quot; alt=&quot;Project_template&quot; width=&quot;521&quot; height=&quot;365&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;2. Notice how Visual Studio has done the required scaffolding for your first TypeScript application. In fact, if you press F5 on your keyboard, you will be able to run this application in your browser. Take some time here and see how closely TypeScript resembles an object oriented programming language. You’d see a class, a constructor method etc.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;3. When you are done with admiring the beauty of TypeScript, you may select the code in &lt;strong&gt;app.ts&lt;/strong&gt; and delete it. Since we are doing Test Driven Development, we will not be writing any Production code without accompanying tests!&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;4. In an enterprise project, you’d usually create a new Test Project in the solution. But for the purpose of this article and also to keep things simple in the beginning, I will just create a new folder called as “&lt;strong&gt;Tests&lt;/strong&gt;” under the same project and add a test file in it. .&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;The goal of the application is to calculate area of different shapes. I usually choose simple applications and simple domains to demonstrate new stuff. This helps in focusing more on the subject rather than focusing on details of the domain.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;At this point, I have renamed &lt;strong&gt;app.ts&lt;/strong&gt; to &lt;strong&gt;Rectangle.ts&lt;/strong&gt; and the test file name is &lt;strong&gt;RectangleTests.ts&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/image2.png&quot;&gt;&lt;img style=&quot;background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;&quot; title=&quot;image&quot; src=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/image_thumb2.png&quot; alt=&quot;image&quot; width=&quot;409&quot; height=&quot;271&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Set up for writing Tests&lt;/h2&gt;
+&lt;p align=&quot;justify&quot;&gt;To test TypeScript code, you’d need a testing framework. There are few popular frameworks available like Jasmine and QUnit. For the purpose of this article and also because at the time of writing this article, I couldn't find any example where typescript is used with QUnit and Chutzpah (more on that later), I decided to write this article using QUnit.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Go ahead and add Qunit-MVC via the package manager console.&lt;/p&gt;
+
+&lt;div id=&quot;codeSnippetWrapper&quot; class=&quot;csharpcode-wrapper&quot;&gt;
+&lt;div id=&quot;codeSnippet&quot; class=&quot;csharpcode&quot;&gt;
+&lt;pre class=&quot;alteven&quot;&gt;&lt;span id=&quot;lnum1&quot; class=&quot;lnum&quot;&gt;   1:&lt;/span&gt; Install-Package Qunit-MVC&lt;/pre&gt;
+&lt;!--CRLF--&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p align=&quot;justify&quot;&gt;You’d also need a type definition file for Qunit. The purpose of type definition file (file with extension *.d.ts) is to let TypeScript know about the types that exist in an API. There is a github project called as &lt;a href=&quot;https://github.com/DefinitelyTyped/DefinitelyTyped&quot;&gt;Definitely Typed&lt;/a&gt;,  which provides high quality type definitions for almost all JavaScript APIs.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Run below command to add the type definition file for QUnit.&lt;/p&gt;
+
+&lt;div id=&quot;codeSnippetWrapper&quot; class=&quot;csharpcode-wrapper&quot;&gt;
+
+&lt;!--CRLF--&gt;
+
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p align=&quot;justify&quot;&gt;Install-Package qunit.TypeScript.DefinitelyTyped&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p align=&quot;justify&quot;&gt;Apart from that, you’d need a test runner, where you can see your passing/failing tests. For that I am going to use &lt;a href=&quot;https://github.com/mmanela/chutzpah&quot;&gt;Chutzpah&lt;/a&gt;. To use Chutzpah in Visual studio you need to add an extension. Select &lt;strong&gt;Tools&lt;/strong&gt;&amp;gt;&lt;strong&gt;Extensions and Updates &lt;/strong&gt;and search for Chutzpah. (Since I already have Chutzpah extension added in my VS, I see the option to disable or uninstall it.)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/image.png&quot;&gt;&lt;img style=&quot;background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;&quot; title=&quot;image&quot; src=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/image_thumb.png&quot; alt=&quot;image&quot; width=&quot;526&quot; height=&quot;371&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Add chutzpah.json file in the root of your project. This json file provides a range of configuration for Chutzpah test runner. For the sake of simplicity, I am configuring the json file with very basic settings:&lt;/p&gt;
+
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:f582039d-aaa6-4692-9014-9605deaa1927&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;html&quot; light=&quot;true&quot; htmlscript=&quot;false&quot;]
+{
+&amp;quot;Compile&amp;quot;: {
+&amp;quot;Mode&amp;quot;: &amp;quot;External&amp;quot;,
+&amp;quot;Extensions&amp;quot;: [ &amp;quot;.ts&amp;quot; ],
+&amp;quot;ExtensionsWithNoOutput&amp;quot;: [ &amp;quot;.d.ts&amp;quot; ]
+}
+}
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p align=&quot;justify&quot;&gt;Compile Mode &lt;strong&gt;External&lt;/strong&gt; denotes that Chutzpah test runner can expect compiled .JS file in the default output directory. If you select mode as &lt;strong&gt;Executable &lt;/strong&gt;then you need to provide a powershell or bat file which will convert .ts files to .js file. In this project, I will use tsconfig.json file and configure it in such a way that visual studio will take care of generating a .js file while building (ctrl + shift + b) the project.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Add a file with name &lt;strong&gt;tsconfig.json&lt;/strong&gt; in the root of the project with below settings.&lt;/p&gt;
+
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:7260c04c-dbbc-4230-9e26-5c8030be7f8b&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;html&quot;]
+{
+&amp;quot;compilerOptions&amp;quot;: {
+&amp;quot;module&amp;quot;: &amp;quot;commonjs&amp;quot;,
+&amp;quot;noImplicitAny&amp;quot;: true,
+&amp;quot;removeComments&amp;quot;: true,
+&amp;quot;preserveConstEnums&amp;quot;: true,
+&amp;quot;sourceMap&amp;quot;: true
+}
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;With that in place, we are all set to write the tests.&lt;/p&gt;
+&lt;h2&gt;The &lt;span style=&quot;color:#ff0000;&quot;&gt;Red&lt;/span&gt; &lt;span style=&quot;color:#008000;&quot;&gt;Green&lt;/span&gt; &lt;span style=&quot;color:#0000ff;&quot;&gt;Refactor&lt;/span&gt; Cycle&lt;/h2&gt;
+&lt;p&gt;Open &lt;strong&gt;RectangleTests.ts&lt;/strong&gt; file and write you first failing test. Below is my first failing test.&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:fb914811-82dc-4181-b0c0-8155a250991d&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+/// &amp;lt;reference path=&amp;quot;../Scripts/typings/qunit/qunit.d.ts&amp;quot; /&amp;gt;
+/// &amp;lt;reference path=&amp;quot;../Rectangle.ts&amp;quot; /&amp;gt;
+
+QUnit.module(&amp;quot;RectangleTests.ts Tests&amp;quot;);
+
+test(&amp;quot;Can create instance of rectangle class with specified length and breadth&amp;quot;, () =&amp;gt; {
+
+var rectangle = new Rectangle();
+
+ok(rectangle != undefined,
+&amp;quot;Assert that rectangle class can be instantiated&amp;quot;);
+
+});
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;There is no need to run tests. The project will not compile because I have not created the Rectangle class yet. A non-compiling class is equivalent to a failing test. So lets write just enough code to make this test pass.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;strong&gt;Rectangle.ts&lt;/strong&gt; file and type below code:&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:b5de3102-e20e-47e5-aeb2-73b22c8d9142&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+class Rectangle {
+
+}
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;Perfect! This is exactly what we need to make the failing test pass. Lets run the test and confirm if our test is passing.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/image3.png&quot;&gt;&lt;img style=&quot;background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;&quot; title=&quot;image&quot; src=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/image_thumb3.png&quot; alt=&quot;image&quot; width=&quot;419&quot; height=&quot;182&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So that’s our Red and Green cycle in TDD. But, what about Refactor? As of now, I do not see any need to refactor the code.&lt;/p&gt;
+&lt;p style=&quot;text-align:justify;&quot;&gt;Let’s write the next test. I would like the length and breadth of the rectangle to be passed as constructor argument to the Rectangle class, so lets add another test which passes length and breadth to the Rectangle class.&lt;/p&gt;
+&lt;p style=&quot;text-align:justify;&quot;&gt;You'd notice that the project is not compiling because there is no constructor in the Rectangle class which accepts two arguments. To make the project compile, lets add a constructor to the Rectangle class:&lt;/p&gt;
+
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:9ebf3367-48cf-47ea-af12-c07482d20cc4&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+class Rectangle {
+private breadth: number;
+private length: number;
+
+constructor(length: number, breadth: number) {
+this.breadth = breadth;
+this.length = length;
+}
+}
+
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;Now lets run the tests again.&lt;/p&gt;
+
+&lt;p&gt;But hey! Our first test is now failing! Because we do not have any blank constructor in the Rectangle class. At this point we need to do some &lt;span style=&quot;color:#1a1a1a;&quot;&gt;refactoring&lt;/span&gt;!&lt;/p&gt;
+
+&lt;p&gt;Do we really need the first test? I would say &lt;strong&gt;No&lt;/strong&gt;, because with the new constructor, we are enforcing a contract that to calculate area of a Rectangle you need to provide length and breadth of the rectangle before hand. So lets &lt;strong&gt;delete &lt;/strong&gt;the first test.&lt;/p&gt;
+&lt;blockquote&gt;&lt;span style=&quot;color:#1a1a1a;&quot;&gt;During the refactoring cycle, not only the production code, but the test code can and should be refactored. &lt;/span&gt;
+&lt;p align=&quot;justify&quot;&gt;Tests deserve to be maintained to the same level of quality as the production code. Indeed, perhaps the tests deserve even more attention than the production code since the quality of the production code depends on the tests;&lt;/p&gt;
+&lt;p align=&quot;right&quot;&gt;-Bob Martin&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;At this point, I would skip demonstrating all the Red Green and refactor cycles that I went through to add the function which calculates the area of a rectangle. The reason I want to skip that is because I want to demonstrate an interesting concept called as “Stubbing”!&lt;/p&gt;
+&lt;h2&gt;Stubbing&lt;/h2&gt;
+&lt;p&gt;For those who are familiar with test driven development would know that unit tests without the ability to stub external dependencies are not of much use. To demonstrate stubbing in our example, I am introducing an external dependency, a webservice which helps in calculating the area of a triangle.&lt;/p&gt;
+&lt;blockquote&gt;Area of Triangle = 1/2 (height * base)&lt;/blockquote&gt;
+&lt;p&gt;In our hypothetical world, there exists a service, which if called, provides the height of the triangle. The requirement is that we call a web service to get the height value.&lt;/p&gt;
+
+&lt;p&gt;To enable stubbing, we need to add typeMoq framework to the project. Using typeMoq, we can stub external dependencies and also use mocking to verify expectations on method calls.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p align=&quot;justify&quot;&gt;Install-Package typemoq&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Let’s create a class with name TriangleTests.ts and write the first failing test.&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:cd57d8f1-402e-4648-87db-965ab86107c4&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+/// &amp;lt;reference path=&amp;quot;../Scripts/typings/qunit/qunit.d.ts&amp;quot; /&amp;gt;
+/// &amp;lt;reference path=&amp;quot;../Scripts/typemoq.d.ts&amp;quot;/&amp;gt;
+/// &amp;lt;reference path=&amp;quot;../Triangle.ts&amp;quot;/&amp;gt;
+
+QUnit.module(&amp;quot;Triangle test with external dependency&amp;quot;);
+
+test(&amp;quot;Can create instance of Traingle class&amp;quot;,
+() =&amp;gt; {
+var triangle = new Triangle(baseValue);
+
+ok(triangle != undefined, &amp;quot;Assert that the triangle instance is not undefined&amp;quot;);
+});
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;This class fails to compile, so lets quickly add Triangle.ts class with a constructor accepting base value:&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:a12106be-ff42-4a8d-a248-a8e6e085c2ce&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+class Triangle {
+private base: number;
+
+constructor(base: number) {
+this.base = base;
+this.ajaxWrapper = ajaxWrapper;
+}
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;Now, the tests should pass. Next, we need to somehow call a service from this class to get height of the triangle. This means, we need to add a new class which does the Ajax call to a hypothetical service. With that information, lets write our next test.&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:2c15cc0c-3fad-434d-9866-47e6279eecbb&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+test(&amp;quot;Can create instance of Triangle class with an external dependency&amp;quot;,
+() =&amp;gt; {
+var triangle = new Triangle(baseValue, mock.object);
+
+ok(triangle != undefined, &amp;quot;Assert that the triangle instance is not undefined&amp;quot;);
+});
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;Notice the usage of mock.object. At this point the project will not compile, so lets fix it and make the tests run. Add an interface in Triangle.ts file.&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:6a1deca9-95b5-4499-a236-df9c5fb9a036&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+interface IAjaxWrapper {
+        performAjaxCall(): number;
+}
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;and an empty class which implements this interface&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:6c0e5a68-e9cb-4e70-b630-047d8815c4d7&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+class AjaxWrapper implements IAjaxWrapper {
+performAjaxCall(): number { throw new Error(&amp;quot;Not implemented&amp;quot;); }
+}
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;Notice that we are not writing any implementation for this class. In fact, any attempt to invoke the performAjaxCall method on this class will throw an exception. At this point, we just want our test to pass which is using the mock object to stub an external dependency.&lt;/p&gt;
+
+&lt;p&gt;Lets modify the Triangle class and add a new constructor argument:&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:7309fd5d-935d-44fc-93df-efeb3a3e2c52&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+class Triangle {
+private ajaxWrapper: IAjaxWrapper;
+private base: number;
+
+constructor(base: number, ajaxWrapper: IAjaxWrapper) {
+this.base = base;
+this.ajaxWrapper = ajaxWrapper;
+}
+
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;Notice the usage of IAjaxWrapper interface in the constructor argument, just like how its done in any object oriented language. Add below references in the test class. With these references, we are telling Chutzpah test runner where to find the typemoq library.&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:2e1e6eaf-8361-4966-88b5-505623920322&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+/// &amp;lt;chutzpah_reference path=&amp;quot;../Scripts/typemoq.js&amp;quot;/&amp;gt;
+/// &amp;lt;chutzpah_reference path=&amp;quot;../Scripts/underscore.js&amp;quot;/&amp;gt;
+/// &amp;lt;chutzpah_reference path=&amp;quot;../Scripts/typings/qunit/qunit.js&amp;quot;/&amp;gt;
+/// &amp;lt;reference path=&amp;quot;../Scripts/typemoq.d.ts&amp;quot;/&amp;gt;
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;With typemoq referenced in the test class, lets define our mock object.&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:e7599cae-e913-4d94-b46a-4b9976361451&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+let mock: TypeMoq.Mock&amp;lt;IAjaxWrapper&amp;gt; = TypeMoq.Mock.ofType&amp;lt;IAjaxWrapper&amp;gt;(AjaxWrapper);
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;Below is the complete code:&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:4de86056-d586-4f2a-8926-1fd44bf4fd8d&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+/// &amp;lt;reference path=&amp;quot;../Scripts/typings/qunit/qunit.d.ts&amp;quot; /&amp;gt;
+/// &amp;lt;reference path=&amp;quot;../Scripts/typemoq.d.ts&amp;quot;/&amp;gt;
+/// &amp;lt;reference path=&amp;quot;../Triangle.ts&amp;quot;/&amp;gt;
+/// &amp;lt;chutzpah_reference path=&amp;quot;../Scripts/typemoq.js&amp;quot;/&amp;gt;
+/// &amp;lt;chutzpah_reference path=&amp;quot;../Scripts/underscore.js&amp;quot;/&amp;gt;
+/// &amp;lt;chutzpah_reference path=&amp;quot;../Scripts/typings/qunit/qunit.js&amp;quot;/&amp;gt;
+
+let mock: TypeMoq.Mock&amp;lt;IAjaxWrapper&amp;gt; = TypeMoq.Mock.ofType&amp;lt;IAjaxWrapper&amp;gt;(AjaxWrapper);
+
+QUnit.module(&amp;quot;Triangle test with external dependency&amp;quot;);
+
+test(&amp;quot;Can create instance of Triangle class with an external dependency&amp;quot;,
+() =&amp;gt; {
+var triangle = new Triangle(baseValue, mock.object);
+
+ok(triangle != undefined, &amp;quot;Assert that the triangle instance is not undefined&amp;quot;);
+});
+
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;This test will pass!&lt;/p&gt;
+
+&lt;p&gt;Let’s write the next test to actually calculate the area of triangle.&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:e8bc8ee5-8927-4e49-958b-42227109e4b5&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+let baseValue = 2;
+
+test(&amp;quot;Can calculate area of a triangle&amp;quot;,
+() =&amp;gt; {
+var heightValue= 10;
+mock.setup(x =&amp;gt; x.performAjaxCall()).returns((n: number) =&amp;gt; heightValue);
+var triangle = new Triangle(baseValue, mock.object);
+
+var result = triangle.calculateArea();
+
+ok(result === 10, &amp;quot;Assert that area is calculated correctly.&amp;quot;);
+});
+
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p align=&quot;justify&quot;&gt;Notice how the performAjaxCall method is being set up to return a predefined height value. At this point, we do not care how AjaxWrapper is going to fetch the value of triangle’s height, all we know is that the performAjaxCall method is setup to provide that value. Notice we just need an interface, so that we can handle the dependency with fake implementation and move ahead with our tests.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Of course, this test will fail, because calculateArea method does not exist. Let’s fix that and make the test pass. Create a calculateArea method in the Triangle.ts class. Below is the code:&lt;/p&gt;
+
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:ac819bb8-4e2a-42e5-a6fd-971194c345ef&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+class Triangle {
+private ajaxWrapper: IAjaxWrapper;
+private base: number;
+
+constructor(base: number, ajaxWrapper: IAjaxWrapper) {
+this.base = base;
+this.ajaxWrapper = ajaxWrapper;
+}
+
+calculateArea(): number {
+var height = this.ajaxWrapper.performAjaxCall();
+return (1/2) * this.base * height;
+}
+}
+
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;This should be enough for the tests to pass.&lt;/p&gt;
+
+&lt;p&gt;With that, I’d conclude this article. Hope the article was helpful.&lt;/p&gt;
+&lt;h2&gt;Quick Tips&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Chutzpah can show test results on a web page. To view your tests in a browser, right click on the test file and from the context menu Select &lt;strong&gt;Run Chutzpah with &amp;gt; Debugger. &lt;/strong&gt;You can also put breakpoints and debug your tests.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p align=&quot;justify&quot;&gt;&lt;a href=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/image4.png&quot;&gt;&lt;img style=&quot;background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;&quot; title=&quot;image&quot; src=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/image_thumb4.png&quot; alt=&quot;image&quot; width=&quot;268&quot; height=&quot;136&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;You can check the code coverage of your TypeScript code. Below is the code coverage of TriangleTests.ts&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/image5.png&quot;&gt;&lt;img style=&quot;background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;&quot; title=&quot;image&quot; src=&quot;http://ashishvegaraju.files.wordpress.com/2016/10/image_thumb5.png&quot; alt=&quot;image&quot; width=&quot;218&quot; height=&quot;218&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The code for this demonstration can be found at my &lt;a href=&quot;https://github.com/avegaraju/TDDWithTypeScript&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;github repository&lt;/a&gt;.&lt;/p&gt;</content><author><name>avegaraju</name></author><category term="chutzpah" /><category term="javascript" /><category term="mocking" /><category term="QUnit" /><category term="stubbing" /><category term="TDD" /><category term="test driven development" /><category term="typemoq" /><category term="typescript" /><category term="unit test" /><summary type="html">In this article, I will demonstrate how to write testable code using TypeScript. I assume that the reader is familiar with JavaScript, heard about Typescript and has done or secretly desires to do test driven development. There is an excellent quick start guide on Typescript that I recommend you to go through before moving ahead.</summary></entry><entry><title type="html">A WCF Chat Service &amp;amp; Client</title><link href="/2015/12/15/a-wcf-chat-service-client/" rel="alternate" type="text/html" title="A WCF Chat Service &amp;amp; Client" /><published>2015-12-15T17:33:00+01:00</published><updated>2015-12-15T17:33:00+01:00</updated><id>/2015/12/15/a-wcf-chat-service-client</id><content type="html" xml:base="/2015/12/15/a-wcf-chat-service-client/">&lt;p align=&quot;justify&quot;&gt;I attended a interview recently for which the pre-requisite was to develop a chat application using WCF as part of a &lt;em&gt;code challenge&lt;/em&gt;. The requirement was quite simple, so instead of taking the usual route of creating a WCF service and adding its reference to a client application, I decided to hand code everything without any configuration or service references!&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Of course the  assumption here is that the service and client applications are owned by a single company/team so that the contracts can be shared between the service and client.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;&lt;!--more--&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;The complete code is available in my &lt;a href=&quot;https://github.com/avegaraju/WCFChatApp&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Github&lt;/a&gt; account.&lt;/p&gt;
+
+&lt;h6&gt;The Problem Statement&lt;/h6&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:c247d9f7-42bd-467e-a56a-5bb236a92f5d&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;text&quot; gutter=&quot;false&quot; light=&quot;true&quot;]
+Goal - Create a Chat Server and Client application using 
+.NET 4.0/4.5 with WCF as the communication mechanism. 
+The Chat Server should be a standalone application and 
+the Chat Client should be a standalone application with 
+a basic UI for users to interact and exchange messages 
+through the Chat server. Stability of the code is a 
+must-have and it should be ensured that the 
+Server/Client do not crash during operation to 
+maintain quality user experience. 
+
+The basic functionality to be supported is as follows: 
+
+1. The chat server should open up a TCP port for
+ listening to incoming client requests. 
+
+2. The server should be able to handle at 
+least 2 distinct clients’ communication in parallel. 
+
+3. On successful connection with the server, 
+the chat client should be able to send plain text 
+messages to the server. 
+
+4. The server should be able to respond to each 
+message by a static message &amp;quot;Hello!&amp;quot; appended 
+with the server's timestamp. 
+
+5. Both chat clients should be able to communicate 
+with the server without the messages of either being 
+visible to the other one. 
+
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;h6 align=&quot;justify&quot;&gt;The Approach&lt;/h6&gt;
+&lt;p align=&quot;justify&quot;&gt;Since the service contract has to be shared between the service and client the best place to create the service contract is in a common library project. I have created a “contract” folder which has few more sub folders having contracts for service, response, request,  fault and a contract for callback service (more on this later).&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://ashishvegaraju.files.wordpress.com/2015/12/image.png&quot;&gt;&lt;img style=&quot;background-image:none;padding-top:0;padding-left:0;display:inline;padding-right:0;border-width:0;&quot; title=&quot;image&quot; src=&quot;http://ashishvegaraju.files.wordpress.com/2015/12/image_thumb.png&quot; alt=&quot;image&quot; width=&quot;299&quot; height=&quot;370&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h6&gt;The Duplex Message Exchange Pattern via Callbacks&lt;/h6&gt;
+&lt;p&gt;IEAChatService.cs is the service contract defined as shown below&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:53f692e4-3830-4b21-bc23-0989a6240c9a&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;csharp&quot;]
+ [ServiceContract(
+        SessionMode = SessionMode.Required, 
+        CallbackContract= typeof(IChatCallback))]
+ public interface IEAChatService
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p align=&quot;justify&quot;&gt;I have defined a CallbackContract for this service contract. This callback contract interface is defined in IChatCallback.cs and is implemented by the client application (EA.Client.EAChat.UI).&lt;/p&gt;
+
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:f5c8c95c-e1a9-4f44-83ac-bfef0512728e&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;csharp&quot; padlinenumbers=&quot;true&quot;]
+    [ServiceContract]
+    public interface IChatCallback
+    {
+        [OperationContract(IsOneWay=true)]
+        void RefreshUserList(List&amp;lt;User&amp;gt; onlineUsers);
+
+        [OperationContract]
+        void ResponseMessage(ResponsePacket response);
+    }
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p align=&quot;justify&quot;&gt;This contract is called as a duplex service contract. Duplex service contract is a message exchange pattern where service as well as client can send messages to other independently. Since this interface is implemented by client (EA.Client.EAChat.UI), the service can directly call the client methods. In this case, whenever a new user enters the chat room the &lt;em&gt;Register  &lt;/em&gt;method of the EAChatService.cs calls the callback method &lt;em&gt;RefreshUserList &lt;/em&gt;on the client, so that client can refresh the user interface and show the name of the newly entered user in the list of users of the chat room. Below is the relevant piece of code.&lt;/p&gt;
+
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:2389c65a-1bbb-4b08-ab09-c7210d0e443d&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;csharp&quot;]
+       public void Register(User userHandle)
+        {
+            try
+            {
+						//---irrelevant code removed ---------
+                       foreach (KeyValuePair&amp;lt;string, IChatCallback&amp;gt; kvp in registeredUser)
+                        {
+                            IChatCallback callback = kvp.Value;
+                            callback.RefreshUserList(onlineUsers);
+                        }
+                    }
+
+                }
+               // ---irrelevant code removed ---------
+
+            }
+            catch (UserHandleInUseException uEx)
+            {
+                log.Error(&amp;quot;User handle is alread in use. Error Detail: &amp;quot; + uEx.Message);
+                throw;
+
+            }
+
+        }
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;h6 align=&quot;justify&quot;&gt;The Service Side Code&lt;/h6&gt;
+&lt;p&gt;EAChatService.cs inherits from ServiceBase.cs. ServiceBase class has some common properties used why the EAChatService class. For instance, the ServiceBase class has a protected getter property  which returns the channel to the client instance which called the operation currently. Below is the code snippet.&lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:5c2a9717-b10b-4593-8ad3-7fcf6c9cc15e&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;csharp&quot;]
+      protected IChatCallback Callback
+       {
+           get
+           {
+               return OperationContext.Current.GetCallbackChannel&amp;lt;IChatCallback&amp;gt;();
+           }
+       }
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;ServiceBase class also has a protected dictionary for registeredUsers which stores the userID and the corresponding Callback as a keyvalue pair in the dictionary object. Since multiple users may call the &lt;em&gt;Register &lt;/em&gt;method at once, the critical section of adding users in the dictionary is synchronized using a lock. below is the complete code of register method.&lt;/p&gt;
+
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:a2ece10f-4f44-4329-81ca-decd9b13b982&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;csharp&quot;]
+       public void Register(User userHandle)
+        {
+            try
+            {
+                if (!registeredUser.ContainsKey(userHandle.UserId) &amp;amp;&amp;amp;
+                    !registeredUser.ContainsValue(Callback))
+                {
+                    lock (syncObject)
+                    {
+                        registeredUser.Add(userHandle.UserId, Callback);
+                        onlineUsers.Add(userHandle);
+
+                        foreach (KeyValuePair&amp;lt;string, IChatCallback&amp;gt; kvp in registeredUser)
+                        {
+                            IChatCallback callback = kvp.Value;
+                            callback.RefreshUserList(onlineUsers);
+                        }
+                    }
+
+                }
+                else
+                {
+                    throw new UserHandleInUseException(ServiceFaultCode.HANDLE_IN_USE, &amp;quot;User with this handle already exist. Please choose a different handle.&amp;quot;);
+                }
+            }
+            catch (UserHandleInUseException uEx)
+            {
+                log.Error(&amp;quot;User handle is alread in use. Error Detail: &amp;quot; + uEx.Message);
+                throw;
+
+            }
+
+        }
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;h6&gt;The Client Code&lt;/h6&gt;
+&lt;p align=&quot;justify&quot;&gt;The client code is implemented in the &lt;em&gt;ChatWindow&lt;/em&gt; cliass. The &lt;em&gt;ChatWindow&lt;/em&gt;  class has a SynchronizationContext which is used to marshal messages from one thread to another thread. You must be wondering, why do we need to marshal messages from one thread to another. The reason is that the client UI runs on a separate thread and the duplex message from the WCF service is delivered to the client application via another thread. Now the message sent from WCF service as part of duplex call cannot be directly used by the client UI. To enable the message transmission between the UI thread and callback thread, we use the UI thread’s SynchronizationContext and call its &lt;em&gt;Post&lt;/em&gt; method to pass the message. I am using Unity container to hold and resolve instances of SynchronizationContext object. Below is the implementation of &lt;em&gt;RefreshUserList&lt;/em&gt; callback method which demonstrates the SynchronizationContext usage.&lt;/p&gt;
+
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:935a3bc5-6dc3-412f-984e-6869b3b190f6&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;csharp&quot; padlinenumbers=&quot;true&quot;]
+       public void RefreshUserList(List&amp;lt;User&amp;gt; onlineUsers)
+        {
+            ClearOnlineUserList();
+
+            foreach (User user in onlineUsers)
+            {
+
+                SendOrPostCallback callback =
+                delegate(object state)
+                {
+                    this.OnlineUserListBox.Items.Add(user.UserId);
+                };
+
+                _uiSyncContext = (SynchronizationContext)container.Resolve(typeof(SynchronizationContext));
+                _uiSyncContext.Post(callback, user.UserId);
+            }
+        }
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;h6&gt;The WCF endpoint &amp;amp; Hosting&lt;/h6&gt;
+&lt;p align=&quot;justify&quot;&gt;The WCF endpoint is configured programmatically in the EA.Host.ServiceHostEngine project where we have the logic of hosting the WCF service as well.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;I have defined an Interface IHostScheme.cs which has the declaration of  &lt;em&gt;Host &lt;/em&gt;method and this interface is implemented by NetTcpHost.cs. Since one of the assumptions is that this chat application works in intranet, I choseto use NetTcp binding for the communication. In future if we decide to make to this chat application work in extranet then we can create another class implementing the IHostScheme interface with appropriate binding implementation.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Lets look at the NetTcpScheme.cs class.&lt;/p&gt;
+
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:a2203c92-2db1-433f-b25b-1f9d25cc64d8&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;csharp&quot;]
+    public class NetTcpHost : IHostScheme
+    {
+        public ServiceHost Host(string portNumber, bool enableMetaData)
+        {
+            Type contractType = typeof(IEAChatService);
+            Type serviceType = typeof(EAChatService);
+
+            Uri baseAddress = GetBaseAddress(portNumber);
+
+            ServiceHost serviceHost = new ServiceHost(serviceType, baseAddress);
+            serviceHost.AddServiceEndpoint(contractType, new NetTcpBinding(), baseAddress.AbsoluteUri);
+
+            ServiceMetadataBehavior metaDataBehavior = new ServiceMetadataBehavior();
+            metaDataBehavior.HttpGetEnabled = false;
+            serviceHost.Description.Behaviors.Add(metaDataBehavior);
+
+            if (enableMetaData)
+            {
+                serviceHost.AddServiceEndpoint(ServiceMetadataBehavior.MexContractName,
+              MetadataExchangeBindings.CreateMexTcpBinding(), &amp;quot;mex&amp;quot;);
+            }
+
+            return serviceHost;
+        }
+
+        private Uri GetBaseAddress(string portNumber)
+        {
+            string prefix = ConfigurationManager.AppSettings[&amp;quot;nettcp_prefix&amp;quot;];
+            string chatServicePath = ConfigurationManager.AppSettings[&amp;quot;EAChatServicePath&amp;quot;];
+
+            return new Uri(prefix + portNumber + chatServicePath);
+
+        }
+    }
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p align=&quot;justify&quot;&gt;The code is pretty much self explanatory. This class is responsible for creating a ServiceHost and a ServiceEndpoint. To create a ServiceHost, we need the type of Service contract and to create a service endpoint which will be hosted by the ServiceHost, we need the contract’s type, address (along with the port) where we will host the service and binding is set to NetTcpBinding because that’s one of the requirement in the problem statement that communication has to take place over tcp port.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;I have made HttpGetEnabled property of ServiceMetadataBehavior to false, as I don’t se any benefit of exposing the wsdl over http for our application. However, MEX endpoint is made configurable, so that if in future we wish to create a new client and create a proxy using svcutil for communication, we could do so easily.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;That’s it! There are other utility projects and relatively less interesting code in the solution, so I will skip the remaining details.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Feel free to use the code and modify it according to your requirements. The code is available  in my &lt;a href=&quot;https://github.com/avegaraju/WCFChatApp&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Github&lt;/a&gt; account.&lt;/p&gt;
+&lt;p&gt;If you have any queries, feel free to ask in the comments section.&lt;/p&gt;</content><author><name>avegaraju</name></author><category term="callback" /><category term="chat" /><category term="code challenge" /><category term="Coding Challenge &amp;amp; Competitions" /><category term="coding competition" /><category term="duplex" /><category term="interview question" /><category term="synchronizationcontext" /><category term="wcf" /><category term="WCF chat service" /><summary type="html">I attended a interview recently for which the pre-requisite was to develop a chat application using WCF as part of a code challenge. The requirement was quite simple, so instead of taking the usual route of creating a WCF service and adding its reference to a client application, I decided to hand code everything without any configuration or service references! Of course the  assumption here is that the service and client applications are owned by a single company/team so that the contracts can be shared between the service and client. The complete code is available in my Github account.</summary></entry><entry><title type="html">Mobile Push Notification Service - Design Approach (Part 1)</title><link href="/2015/12/08/mobile-push-notification-service-design-approach-part-1/" rel="alternate" type="text/html" title="Mobile Push Notification Service - Design Approach (Part 1)" /><published>2015-12-08T18:00:00+01:00</published><updated>2015-12-08T18:00:00+01:00</updated><id>/2015/12/08/mobile-push-notification-service-design-approach-part-1</id><content type="html" xml:base="/2015/12/08/mobile-push-notification-service-design-approach-part-1/">&lt;h6&gt;&lt;span style=&quot;font-weight:normal;&quot;&gt;Overview of Push Notifications&lt;/span&gt;&lt;/h6&gt;
+&lt;p align=&quot;justify&quot;&gt;In this article, I am going to design the architecture for implementing push notifications for you mobile application. This part only has design and architecture information, code will be covered in Part 2.&lt;/p&gt;
+
+&lt;blockquote&gt;If you are new to push notifications, please read &lt;a href=&quot;https://en.wikipedia.org/wiki/Notification_service&quot;&gt;wiki &lt;/a&gt;article about the technology and also about &lt;a href=&quot;https://en.wikipedia.org/wiki/Google_Cloud_Messaging&quot;&gt;GCM &lt;/a&gt;and &lt;a href=&quot;https://en.wikipedia.org/wiki/Apple_Push_Notification_Service&quot;&gt;APN &lt;/a&gt;services.&lt;/blockquote&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;Below diagram depicts a high level overview of device registration process.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ashishvegaraju.files.wordpress.com/2015/11/devicereg.png?w=559&quot; alt=&quot;DeviceReg&quot; width=&quot;1312&quot; height=&quot;758&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;
+&lt;div align=&quot;justify&quot;&gt;Device sends sender ID, application ID to GCM server for registration.&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;
+&lt;div align=&quot;justify&quot;&gt;Upon registration Cloud Service (GCM/APNs) sends a unique registration ID to the device.&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;
+&lt;div align=&quot;justify&quot;&gt;After receiving the registration ID from the cloud service the device will forward the registration ID to the Push Notification Web Service.&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;
+&lt;div align=&quot;justify&quot;&gt;The Push Notification web service will store the registration ID in a local database for later use.&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p align=&quot;justify&quot;&gt;a. Whenever Push Notification service needs to send the notification, it has to call GCM/APN service with registration ID of the device which is stored in the database.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;b. GCM/APN service will deliver the notification to respective mobile device based on the registration ID.&lt;/p&gt;
+
+&lt;blockquote&gt;Push Notification service would require an outbound internet connection to send messages to cloud services. Make sure to open two outbound ports on your push notification server.&lt;/blockquote&gt;
+&lt;h4&gt;&lt;strong&gt;Push Notification Components&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;You would need to implement two components:&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;
+&lt;h5&gt;&lt;em&gt;&lt;strong&gt;Push Notification Web Service&lt;/strong&gt;&lt;/em&gt;&lt;/h5&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p align=&quot;justify&quot;&gt;Push notification web service could be a rest service. Bare minimum the web service should have two functionalities. One, to register new device and Second, to unregister a device.&lt;/p&gt;
+
+&lt;ol&gt;
+	&lt;li&gt;
+&lt;h5&gt;&lt;strong&gt;&lt;em&gt;Push Notification Windows Service.&lt;/em&gt;&lt;/strong&gt;&lt;/h5&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p align=&quot;justify&quot;&gt;You need to implement a windows service which could spawn multiple threads to listen to a messaging queue at a specified address. This service should be capable to pick up messages as and when it arrives to the messaging queue. The service will then query the local database and get a list of eligible devices which should receive the notification message and communicate with the cloud messaging services to get the notifications delivered.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p align=&quot;justify&quot;&gt;Push Notification Windows service is a Microsoft Windows&lt;sup&gt;® &lt;/sup&gt;terminology. On non-windows platform this windows service will be a process which will be initiated with a start-up batch file which could be hooked up with tomcat initialization process.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4&gt;&lt;strong&gt;Push Notification Architecture&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Diagram below depicts the push notification architecture at high level.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ashishvegaraju.files.wordpress.com/2015/11/hld.png?w=559&quot; alt=&quot;HLD&quot; width=&quot;1313&quot; height=&quot;924&quot; /&gt;&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;
+&lt;div align=&quot;justify&quot;&gt;As depicted in the diagram above, the first step is get the unique device ID from the cloud messaging service. The mobile application should make a call to the cloud messaging service every time it is launched. It is important to make this call every time as it may so happen that the unique device ID assigned earlier has now expired.&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;
+&lt;div align=&quot;justify&quot;&gt;
+
+Second step is to call the Push Notification web service from the mobile application and include the unique device ID (received from cloud messaging service) in the payload. You may want to pass some additional information like the device type, device operating system etc in the payload. A sample payload JSON is shown below:
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:8deaa2ad-61ae-43d6-8179-78575cbdfd0d&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;javascript&quot;]
+DevicePayload:{
+
+deviceId:'APA9sdsdA',
+
+deviceType:'mobile/tablet',
+
+deviceOS:'android/apple',
+
+userID:'xyz@gmail.com',
+
+}
+
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;
+&lt;div align=&quot;justify&quot;&gt;Push notification web service will persist the payload in a local database.&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;
+&lt;div align=&quot;justify&quot;&gt;Core product which is responsible for generating events per user will create notification messages and publish it to the Messaging Queue.&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;
+&lt;div align=&quot;justify&quot;&gt;Push notification windows service’s functionality is to constantly poll the Messaging Queue and pull any new message that arrives to the queue. The service should then query the local database to get the device id associated with the user id for which the notification was generated.&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;
+&lt;div align=&quot;justify&quot;&gt;With the fetched device id, the windows service will then communicate with cloud messaging services (GCM/APN).&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p align=&quot;justify&quot;&gt;This is the architecture at high level to design push notification service for your mobile application. In the next article (Part-2), I will cover the code required to communicate with the cloud messaging services.&lt;/p&gt;</content><author><name>avegaraju</name></author><category term="APN" /><category term="apple push notification service" /><category term="architecure" /><category term="cloud messaging services" /><category term="design" /><category term="Design &amp;amp; Architecture" /><category term="GCM" /><category term="google cloud messaging service" /><category term="mobile" /><category term="push notification" /><summary type="html">Overview of Push Notifications In this article, I am going to design the architecture for implementing push notifications for you mobile application. This part only has design and architecture information, code will be covered in Part 2.</summary></entry><entry><title type="html">A Thread Safe Singleton Class in .NET</title><link href="/2015/12/08/a-thread-safe-singleton-class-in-net/" rel="alternate" type="text/html" title="A Thread Safe Singleton Class in .NET" /><published>2015-12-08T17:32:00+01:00</published><updated>2015-12-08T17:32:00+01:00</updated><id>/2015/12/08/a-thread-safe-singleton-class-in-net</id><content type="html" xml:base="/2015/12/08/a-thread-safe-singleton-class-in-net/">&lt;p align=&quot;justify&quot;&gt;In this post I will demonstrate creating a singleton class in .Net that is thread safe. As usual the singleton class should have a private constructor as shown below so that any other class cannot “directly” create an instance of our singleton class.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;&lt;!--more--&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Apart from that, I have created two global variables, one to hold the instance of the Singleton class and another one of type object which will be used later for synchronization between threads (more on that later).&lt;/p&gt;
+
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:fa80e900-39bf-485c-b945-fc9e5bb5939c&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;csharp&quot; padlinenumbers=&quot;true&quot; light=&quot;true&quot; wraplines=&quot;true&quot;]
+    static SingletonSample _instance;
+    static readonly object _synchronizer = new object();
+    /// &amp;amp;amp;lt;summary&amp;amp;amp;gt;
+    /// Private C'tor, so that this class cannot be instantited by other classes directly
+    /// &amp;amp;amp;lt;/summary&amp;amp;amp;gt;
+    private SingletonSample()
+    {
+
+    }
+
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;h6&gt;Method 1 – Using synchronization lock&lt;/h6&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;GetInstance is a public static method, this method is the only way by which any other class can get instance of the singleton class.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Below code snippet uses double check pattern before creating the instance of the singleton class. The first If statement, if true, will give the instance of Singleton class instantly. However, if _instance variable is null then program will enter a critical section (the lock statement) synchronized using a global object (_synchronizer). Inside the critical section, I am checking the _instance  variable again if it is null (double check), if it is, then we finally create the instance of the class.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;One interesting point to note here is, I am not creating the instance directly and returning it back. I am first assigning the class reference into a temporary object of type SingletonClass (tempInstance) and then doing a  &lt;a href=&quot;https://msdn.microsoft.com/en-us/library/system.threading.volatile(v=vs.110).aspx&quot;&gt;Volatile&lt;/a&gt; write on the actual instance variable (_instance).&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:2559210c-f730-46f3-821d-6bb73ce1632b&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;csharp&quot;]
+        /// &amp;amp;amp;lt;summary&amp;amp;amp;gt;
+        /// Method is responsible for providing instance of this class.
+        /// &amp;amp;amp;lt;/summary&amp;amp;amp;gt;
+        /// &amp;amp;amp;lt;returns&amp;amp;amp;gt;Instance of SingleTonSample class&amp;amp;amp;lt;/returns&amp;amp;amp;gt;
+        public static SingletonSample GetInstance()
+        {
+            //If instance is available return that.
+            if (_instance != null)
+                return _instance;
+
+            //Critical section. Ony one thread can enter at a time.
+            lock(_synchronizer)
+            {
+                //Check again if the instance in null
+                if(_instance == null)
+                {
+                    SingletonSample tempInstance = new SingletonSample();
+                    //Volatile write to make sure that _instance is 
+                    //populated with tempInstance reference without any compiler optimization.
+                    Volatile.Write(ref _instance, tempInstance);
+                }
+            }
+
+            return _instance;
+        }
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p align=&quot;justify&quot;&gt;The problem with this approach is that if this method is used in a highly parallel system, the critical section will cause all threads to do nothing but wait for an instance of Singleton class to be created. However, this will happen only once when the first instance is getting created, but still, this is wasteful of the resources.&lt;/p&gt;
+&lt;p align=&quot;justify&quot;&gt;Below is another, more efficient way of creating a singleton which neither uses double check pattern nor it has a critical section for thread synchronization.&lt;/p&gt;
+
+&lt;h6&gt;Method 2 – Without Critical Section or Double Check&lt;/h6&gt;
+&lt;p align=&quot;justify&quot;&gt;Below method will allow multiple threads to create instance of Singleton class, but &lt;a href=&quot;https://msdn.microsoft.com/en-us/library/system.threading.interlocked(v=vs.110).aspx&quot;&gt;Interlocked&lt;/a&gt; class’s CompareExchange will make sure that only one instance is assigned to _instance variable. Objects created by other  threads and not assigned to _instance variable will soon become Orphan and  will be garbage collected at a later point of time by the CLR.&lt;/p&gt;
+
+&lt;div id=&quot;scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:3c6dd858-1ab2-41bc-9bfa-fc04938077a4&quot; class=&quot;wlWriterEditableSmartContent&quot; style=&quot;float:none;margin:0;display:inline;padding:0;&quot;&gt;
+
+[sourcecode language=&quot;csharp&quot;]
+        /// &amp;amp;amp;lt;summary&amp;amp;amp;gt;
+        /// Method is responsible for providing instance of this class without critical section
+        /// or double check pattern.
+        /// &amp;amp;amp;lt;/summary&amp;amp;amp;gt;
+        /// &amp;amp;amp;lt;returns&amp;amp;amp;gt;Instance of SingletonSample class&amp;amp;amp;lt;/returns&amp;amp;amp;gt;
+        public static SingletonSample GetInstance()
+        {
+            //If instance is available return that.
+            if (_instance != null)
+                return _instance;
+
+            SingletonSample tempInstance = new SingletonSample();
+            /*Multiple threads will create singleton object, but only 
+            *one will be asssgined to _instance variable. Rest others will be 
+            *GC'd (Garbage Collected) later at some point of time. 
+            */
+            Interlocked.CompareExchange(ref _instance, tempInstance,null);
+
+            return _instance;
+        }
+[/sourcecode]
+
+&lt;/div&gt;
+&lt;p&gt;Both methods are thread safe. However, method 2 is marginally more efficient and lean as compared to the first one.&lt;/p&gt;</content><author><name>avegaraju</name></author><category term=".net" /><category term="c#" /><category term="csharp" /><category term="Design &amp;amp; Architecture" /><category term="double check pattern" /><category term="Singleton" /><category term="thread safe" /><summary type="html">In this post I will demonstrate creating a singleton class in .Net that is thread safe. As usual the singleton class should have a private constructor as shown below so that any other class cannot “directly” create an instance of our singleton class. Apart from that, I have created two global variables, one to hold the instance of the Singleton class and another one of type object which will be used later for synchronization between threads (more on that later).</summary></entry></feed>

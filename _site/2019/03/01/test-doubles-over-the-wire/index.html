@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Test doubles ; Over the wire | My code catalog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Test doubles ; Over the wire" />
+<meta name="author" content="avegaraju" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Please note: If the code snippets in this article are not visible on your mobile browser then try to view this article with Desktop site option enabled." />
+<meta property="og:description" content="Please note: If the code snippets in this article are not visible on your mobile browser then try to view this article with Desktop site option enabled." />
+<link rel="canonical" href="/2019/03/01/test-doubles-over-the-wire/" />
+<meta property="og:url" content="/2019/03/01/test-doubles-over-the-wire/" />
+<meta property="og:site_name" content="My code catalog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-01T00:09:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Test doubles ; Over the wire" />
+<script type="application/ld+json">
+{"dateModified":"2019-03-01T00:09:00+01:00","datePublished":"2019-03-01T00:09:00+01:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/2019/03/01/test-doubles-over-the-wire/"},"url":"/2019/03/01/test-doubles-over-the-wire/","author":{"@type":"Person","name":"avegaraju"},"description":"Please note: If the code snippets in this article are not visible on your mobile browser then try to view this article with Desktop site option enabled.","headline":"Test doubles ; Over the wire","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="My code catalog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">My code catalog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Test doubles ; Over the wire</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-03-01T00:09:00+01:00" itemprop="datePublished">Mar 1, 2019
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">avegaraju</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!-- wp:paragraph {"customFontSize":12} -->
+<p style="font-size:12px;"><strong>Please note</strong>: If the code snippets in this article are not visible on your mobile browser then try to view this article with <em>Desktop site</em> option enabled.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"dropCap":true} -->
+<p class="has-drop-cap">Developing microservices is complex and testing its integration is even  more complex. Assuring availability of all the inter-dependent services with up-to-date builds in the test environment is quite a tedious &amp; costly setup to maintain. Stubs and mocks on the other hand are cheap, easily maintainable and they make integration tests predictable and repeatable. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Almost two years ago, we faced a problem at work where we were desperately looking for a solution to test multiple Web API interactions with an external system over HTTP. In short, we wanted a hassle free mechanism to stub and verify invocation of an external service. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We researched and came across <a href="http://www.mbtest.org/">Mountebank</a>, which was not only painful to configure, but was error prone too. To top it all off, configuring dynamic behavior required enabling javascript injection. No points for guessing, the security team of my company outrightly rejected the request to enable javascript injection on any of our servers. Not to mention, no clean way to deploy and integrate it with our CI/CD pipelines. Later, due to various constraints, we decided to spend our time on delivering new features instead of solving this problem. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Feeling dejected, I started <a href="https://github.com/avegaraju/Imposter">imposter</a> project in my free time with an intent to develop a simple, developer friendly stubbing and mocking mechanism. The project is now in a decent enough state to deserve a blog article.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Without further ado, in this article I will demonstrate how to create and configure stubs &amp; mocks using the <a href="https://github.com/avegaraju/Imposter">imposter</a> project. Let's begin with configuring and creating stubs.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Configuring &amp; creating stubs</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>To configure a stub, you need to reference <a href="https://www.nuget.org/packages/Appify.FluentImposter.AspnetCore/">FluentImposter.AspNetCore package</a>. This package contains an ASP.Net middleware <code>UseStubImposters</code>, to configure stubs. All you need to do is to configure it in the <code>Startup.cs</code> as shown below:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><noscript><pre>400: Invalid request</pre></noscript><script src="https://gist.github.com/2e0e4c12d21a0a15d706fc6b0a514161.js"> </script></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><code>ImpostersAsStubConfiguration</code>, as the name suggests, accepts a list of imposters-as-stubs. These imposters are hosted as REST endpoints by the middleware. To demonstrate, let's create an imposter which will stub the <code>Orders</code> REST endpoint. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><noscript><pre>400: Invalid request</pre></noscript><script src="https://gist.github.com/505104b11cb45fda1bd0e7dca0b68f48.js"> </script></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Being a fan of fluent APIs, I made the <code>ImposterDefinition</code> fluent. I like the idea of an API guiding me about the next steps. To begin with, it guides to define a resource to be stubbed, followed by a set of conditions that must match for the imposter to accept a request and respond with a canned response.  In this example, if the request body contains <code>Product:1234</code> then  this imposter will return a pre-configured response.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4} -->
+<h4>Creating Pre-configured responses.</h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The <code>ResponseBuilder</code> helps to build the canned response. The code is pretty straight forward. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><noscript><pre>400: Invalid request</pre></noscript><script src="https://gist.github.com/9c71b7d3b946211332bc51220b67737b.js"> </script></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>As shown in the below POSTMan screenshot, the <code>Orders</code> imposter endpoint is responding with a preconfigured response and a <code>Created (201)</code> status code because the request body has the content <code>Product:1234</code>. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":676} -->
+<figure class="wp-block-image"><img src="https://ashishvegaraju.files.wordpress.com/2019/02/image.png" alt="" class="wp-image-676" /><figcaption>The screen shot is of PostMan invoking Orders imposter and receiving a pre-configured response.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Let's move on to configure and create an imposter as a mock.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Configuring &amp; creating mocks</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The same package<a href="https://www.nuget.org/packages/Appify.FluentImposter.AspnetCore/">&nbsp;FluentImposter.AspNetCore package</a>  has another middleware <code>UseMockImposters</code>, which is capable of configure and hosting mocks. Example shown below:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><noscript><pre>400: Invalid request</pre></noscript><script src="https://gist.github.com/02cf07d5aa9fa748e009e99dbfc44bd6.js"> </script></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Mocking requires invocation verification, hence a backing store is needed to keep the count of REST endpoint invocations. At the time of writing this article, I've only added support for <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDb</a> as a backing store which can be enable by adding   <br /><a href="https://www.nuget.org/packages/Appify.FluentImposter.DataStore.AwsDynamoDb/">Appify.FluentImposter.DataStore.AwsDynamoDb</a> Nuget package in your project. In case you do not have an Amazon AWS account, you can work with <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html">local DynamoDb installation</a> as well. But be aware that local DynamoDb, as the name suggests, is good for local testing and not recommended for production use. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Below is how you can create a MocksDatStore which connects to local DynamoDb installation.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><noscript><pre>400: Invalid request</pre></noscript><script src="https://gist.github.com/8c050b7fafdd808e515be8355cc92c10.js"> </script></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I wouldn't go into the details of this datastore. All that the <code>MocksDataStore</code> should do is to return <code>AwsDynamoDbDataStore</code> instance which does all the magic of maintaining request invocations.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The next step is to create Imposters for the REST endpoints. To demonstrate, lets create a mock for <code>api/Products</code> endpoint.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><noscript><pre>400: Invalid request</pre></noscript><script src="https://gist.github.com/90378aac89406d5d6023a60635916969.js"> </script></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Let's spin up POSTMan and invoke <code>api/Products</code> endpoint.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>As shown in the screen shot, the imposter responded with a canned response.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":688} -->
+<figure class="wp-block-image"><img src="https://ashishvegaraju.files.wordpress.com/2019/02/image-2.png" alt="" class="wp-image-688" /><figcaption>POSTMan screenshot of invoking api/Products endpoint.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":4} -->
+<h4>Mock verification</h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The <code>UseMockImposters</code> middleware hosts a mock verification endpoint with resource path <code>mocks/verify</code> accepting Http GET requests. The request body should contain the details of the REST endpoint for which invocation verification has to be done.  Below is how the invocation verification for <code>api/Products</code> endpoint can be done using POSTMan</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":689} -->
+<figure class="wp-block-image"><img src="https://ashishvegaraju.files.wordpress.com/2019/02/image-3.png" alt="" class="wp-image-689" /><figcaption>Verification of invocation using POSTMan</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The mock verification endpoint responds back with the resource invoked along with the total number of invocations so far. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Conclusion</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Thanks for reading. I am actively working on this project from last few months and planning to support more protocols. If you have any suggestion or improvements for the project then do let me know via comments. If you want to contribute then feel free to create pull requests in <a href="https://github.com/avegaraju/Imposter">github</a>. </p>
+<!-- /wp:paragraph -->
+
+  </div><a class="u-url" href="/2019/03/01/test-doubles-over-the-wire/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">My code catalog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">My code catalog</li><li><a class="u-email" href="mailto:avegaraju@gmail.com">avegaraju@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/avegaraju"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">avegaraju</span></a></li><li><a href="https://www.twitter.com/ashishvegaraju"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">ashishvegaraju</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>test.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

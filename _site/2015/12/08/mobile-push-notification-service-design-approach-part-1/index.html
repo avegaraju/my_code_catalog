@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Mobile Push Notification Service - Design Approach (Part 1) | My code catalog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Mobile Push Notification Service - Design Approach (Part 1)" />
+<meta name="author" content="avegaraju" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Overview of Push Notifications In this article, I am going to design the architecture for implementing push notifications for you mobile application. This part only has design and architecture information, code will be covered in Part 2." />
+<meta property="og:description" content="Overview of Push Notifications In this article, I am going to design the architecture for implementing push notifications for you mobile application. This part only has design and architecture information, code will be covered in Part 2." />
+<link rel="canonical" href="/2015/12/08/mobile-push-notification-service-design-approach-part-1/" />
+<meta property="og:url" content="/2015/12/08/mobile-push-notification-service-design-approach-part-1/" />
+<meta property="og:site_name" content="My code catalog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-12-08T18:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Mobile Push Notification Service - Design Approach (Part 1)" />
+<script type="application/ld+json">
+{"dateModified":"2015-12-08T18:00:00+01:00","datePublished":"2015-12-08T18:00:00+01:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/2015/12/08/mobile-push-notification-service-design-approach-part-1/"},"url":"/2015/12/08/mobile-push-notification-service-design-approach-part-1/","author":{"@type":"Person","name":"avegaraju"},"description":"Overview of Push Notifications In this article, I am going to design the architecture for implementing push notifications for you mobile application. This part only has design and architecture information, code will be covered in Part 2.","headline":"Mobile Push Notification Service - Design Approach (Part 1)","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="My code catalog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">My code catalog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Mobile Push Notification Service - Design Approach (Part 1)</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2015-12-08T18:00:00+01:00" itemprop="datePublished">Dec 8, 2015
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">avegaraju</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h6><span style="font-weight:normal;">Overview of Push Notifications</span></h6>
+<p align="justify">In this article, I am going to design the architecture for implementing push notifications for you mobile application. This part only has design and architecture information, code will be covered in Part 2.</p>
+
+<blockquote>If you are new to push notifications, please read <a href="https://en.wikipedia.org/wiki/Notification_service">wiki </a>article about the technology and also about <a href="https://en.wikipedia.org/wiki/Google_Cloud_Messaging">GCM </a>and <a href="https://en.wikipedia.org/wiki/Apple_Push_Notification_Service">APN </a>services.</blockquote>
+<!--more-->
+
+<p>Below diagram depicts a high level overview of device registration process.</p>
+
+<p><img src="https://ashishvegaraju.files.wordpress.com/2015/11/devicereg.png?w=559" alt="DeviceReg" width="1312" height="758" /></p>
+<ol>
+	<li>
+<div align="justify">Device sends sender ID, application ID to GCM server for registration.</div></li>
+	<li>
+<div align="justify">Upon registration Cloud Service (GCM/APNs) sends a unique registration ID to the device.</div></li>
+	<li>
+<div align="justify">After receiving the registration ID from the cloud service the device will forward the registration ID to the Push Notification Web Service.</div></li>
+	<li>
+<div align="justify">The Push Notification web service will store the registration ID in a local database for later use.</div></li>
+</ol>
+<p align="justify">a. Whenever Push Notification service needs to send the notification, it has to call GCM/APN service with registration ID of the device which is stored in the database.</p>
+<p align="justify">b. GCM/APN service will deliver the notification to respective mobile device based on the registration ID.</p>
+
+<blockquote>Push Notification service would require an outbound internet connection to send messages to cloud services. Make sure to open two outbound ports on your push notification server.</blockquote>
+<h4><strong>Push Notification Components</strong></h4>
+<p>You would need to implement two components:</p>
+<ol>
+	<li>
+<h5><em><strong>Push Notification Web Service</strong></em></h5>
+</li>
+</ol>
+<p align="justify">Push notification web service could be a rest service. Bare minimum the web service should have two functionalities. One, to register new device and Second, to unregister a device.</p>
+
+<ol>
+	<li>
+<h5><strong><em>Push Notification Windows Service.</em></strong></h5>
+</li>
+</ol>
+<p align="justify">You need to implement a windows service which could spawn multiple threads to listen to a messaging queue at a specified address. This service should be capable to pick up messages as and when it arrives to the messaging queue. The service will then query the local database and get a list of eligible devices which should receive the notification message and communicate with the cloud messaging services to get the notifications delivered.</p>
+
+<blockquote>
+<p align="justify">Push Notification Windows service is a Microsoft Windows<sup>® </sup>terminology. On non-windows platform this windows service will be a process which will be initiated with a start-up batch file which could be hooked up with tomcat initialization process.</p>
+</blockquote>
+<h4><strong>Push Notification Architecture</strong></h4>
+<p>Diagram below depicts the push notification architecture at high level.</p>
+
+<p><img src="https://ashishvegaraju.files.wordpress.com/2015/11/hld.png?w=559" alt="HLD" width="1313" height="924" /></p>
+<ol>
+	<li>
+<div align="justify">As depicted in the diagram above, the first step is get the unique device ID from the cloud messaging service. The mobile application should make a call to the cloud messaging service every time it is launched. It is important to make this call every time as it may so happen that the unique device ID assigned earlier has now expired.</div></li>
+	<li>
+<div align="justify">
+
+Second step is to call the Push Notification web service from the mobile application and include the unique device ID (received from cloud messaging service) in the payload. You may want to pass some additional information like the device type, device operating system etc in the payload. A sample payload JSON is shown below:
+<div id="scid:C89E2BDB-ADD3-4f7a-9810-1B7EACF446C1:8deaa2ad-61ae-43d6-8179-78575cbdfd0d" class="wlWriterEditableSmartContent" style="float:none;margin:0;display:inline;padding:0;">
+
+[sourcecode language="javascript"]
+DevicePayload:{
+
+deviceId:'APA9sdsdA',
+
+deviceType:'mobile/tablet',
+
+deviceOS:'android/apple',
+
+userID:'xyz@gmail.com',
+
+}
+
+[/sourcecode]
+
+</div>
+</div></li>
+	<li>
+<div align="justify">Push notification web service will persist the payload in a local database.</div></li>
+	<li>
+<div align="justify">Core product which is responsible for generating events per user will create notification messages and publish it to the Messaging Queue.</div></li>
+	<li>
+<div align="justify">Push notification windows service’s functionality is to constantly poll the Messaging Queue and pull any new message that arrives to the queue. The service should then query the local database to get the device id associated with the user id for which the notification was generated.</div></li>
+	<li>
+<div align="justify">With the fetched device id, the windows service will then communicate with cloud messaging services (GCM/APN).</div></li>
+</ol>
+<p align="justify">This is the architecture at high level to design push notification service for your mobile application. In the next article (Part-2), I will cover the code required to communicate with the cloud messaging services.</p>
+
+  </div><a class="u-url" href="/2015/12/08/mobile-push-notification-service-design-approach-part-1/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">My code catalog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">My code catalog</li><li><a class="u-email" href="mailto:avegaraju@gmail.com">avegaraju@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/avegaraju"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">avegaraju</span></a></li><li><a href="https://www.twitter.com/ashishvegaraju"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">ashishvegaraju</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>test.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
