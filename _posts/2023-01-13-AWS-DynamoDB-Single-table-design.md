@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Test doubles ; Over the wire
-date: 2019-03-01 00:09
+title: AWS DynamoDb : A tale of single table
+date: 2023-01-13 00:09
 author: avegaraju
 comments: true
-categories: [fakes, integration testing, Microservice testing, mocks, stubs, test doubles over the wire, test driven development]
+categories: [Single table design, AWS, dynamoDB]
 ---
 
 # <span style="text-transform: capitalize"> AWS DynamoDb : A tale of single table
