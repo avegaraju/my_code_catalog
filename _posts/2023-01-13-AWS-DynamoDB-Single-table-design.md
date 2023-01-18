@@ -102,7 +102,7 @@ Similarly its is easy to create GSIs to support additional patterns in future.
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-GSI is not the only way to support additional access patterns, there are two more ways to support additional access patterns:
+GSI is not the only way to support additional access patterns, there are three more ways to support additional access patterns:
 <!-- /wp:paragraph -->
 
 * Local Secondary Index (LSI): Similar to GSI but only allows to use the same partition key but different sort key. It can be useful if you only need to change the sort key and are okay with the queries always happening within a single partition.
@@ -164,11 +164,7 @@ Hot partition can occur when the access patterns of a single table design are no
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-A common cause of hot partitions is when the partition key is not chosen or used correctly. For example, if the partition key is chosen based on a monotonically increasing value, such as a timestamp, then all new items will be added to the same partition, causing a hot partition.
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-Another common cause of hot partitions is when the access pattern is not evenly distributed. For example, if most of the requests are for a specific partition key value then that partition will become hot.
+A common cause of hot partitions is when the access pattern is not evenly distributed. For example, if most of the requests are for a specific partition key value then that partition will become hot.
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
@@ -284,9 +280,9 @@ While single table design in DynamoDB can be powerful and efficient for many typ
 	Single table design is based on the primary key, if the access patterns are not predictable it could lead to uneven distribution of the data and cause hot partitions. In this case, you might want to consider using a different database solution like Amazon RDS, which allows you to create read replicas to handle uneven read workloads.
 
 <!-- wp:paragraph -->
-The article is quite long, however I believe we have just scratched the surface of this design technique. For further reading I would advise to refer to the AWS documentation on DynamoDB and watch <a href="https://www.youtube.com/watch?v=Xn12QSNa4RE" target="_blank" rel="noopener" data-mce-href="https://www.youtube.com/watch?v=Xn12QSNa4RE">this video</a>.
+The article is quite long, however I believe I've just scratched the surface of this design technique. For further reading I would advise to refer to the AWS documentation on DynamoDB and watch <a href="https://www.youtube.com/watch?v=Xn12QSNa4RE" target="_blank" rel="noopener" data-mce-href="https://www.youtube.com/watch?v=Xn12QSNa4RE">this video</a>.
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-Please <a href="https://ashishvegaraju.com/contact" target="_blank" rel="noopener" data-mce-href="https://ashishvegaraju.com/contact">contact me</a> if you have any questions on this topic and feel free to share it with others if you think it is helpful!
+Please <a href="https://ashishvegaraju.com/contact" target="_blank" rel="noopener" data-mce-href="https://ashishvegaraju.com/contact">contact me</a> if you have any questions on this topic and feel free to share it with others if you think it is useful!
 <!-- /wp:paragraph -->
