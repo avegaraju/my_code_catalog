@@ -46,9 +46,11 @@ Here's an example of how you might set up a table:
 <!-- wp:paragraph -->
 In this example, the partition key is "entity" and the sort key is "entity_id" . This table can have many other attributes like name, address, price etc. Using this structure, you can retrieve all orders  by using the "order" partition key and order_id as the sort key. Or you can retrieve all product details for a specific product by using "product" as the partition key and the product_id as the sort key.
 <!-- /wp:paragraph -->
+
 <!-- wp:paragraph -->
 With basic definition out of our way, lets dive into the bend of mind that is required to design such a table. Before starting to design a table you have to come up with ways in which you'd like to access data from this table. This is commonly known as "Access Pattern". In fact, in the previous paragraph what you read about retrieving data with the help of partition and sort keys are indeed access patterns. Coming up with access patterns at the beginning helps to model the table better.
 <!-- wp:paragraph -->
+
 <!-- wp:heading {"level":2} -->
 ## Access Patterns explained
 <!-- /wp:heading -->
