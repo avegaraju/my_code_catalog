@@ -70,11 +70,8 @@ A global secondary index (GSI) in Amazon DynamoDB is a secondary index that has 
 Using the same example mentioned before, let's say you want to query all orders for a give customer_id then you might want to create a GSI on the table to support this access pattern. This GSI would have customer_id as the primary key. 
 <!-- /wp:paragraph -->
 
-
-```
 **Note**
 I am using <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html" target="_blank" rel="noopener" data-mce-href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html">[No Sql Workbench]</a> to model the database table below. I highly recommend to use this tool for modeling, as it makes it easy to quickly visualize the changes made on the model.
-```
 
 <!-- wp:paragraph -->
 Pictures are worth 1000 words, so here is a screenshot of how the table is designed with primary and sort key with different attributes. 
