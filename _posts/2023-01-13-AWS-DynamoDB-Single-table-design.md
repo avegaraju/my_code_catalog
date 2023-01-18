@@ -79,19 +79,19 @@ Using the same example mentioned before, let's say you want to query all orders 
 Pictures are worth 1000 words, so here is a screenshot of how the table is designed with primary and sort key with different attributes. 
 <!-- /wp:paragraph -->
 
-<img src="../images/blog/table-with-attributes.jpg"/>
+<img src="../../../../images/blog/table-with-attributes.jpg"/>
 
 <!-- wp:paragraph -->
 Here is the screenshot of GSI to support the access pattern of accessing orders based on a customer_id
 <!-- /wp:paragraph -->
 
-<img src="../images/blog/gsi-orders-by-customer.jpg"/>
+<img src="../../../../images/blog/gsi-orders-by-customer.jpg"/>
 
 <!-- wp:paragraph -->
 I added some dummy data to show how the GSI was able to support our access pattern.
 <!-- /wp:paragraph -->
 
-<img src="../images/blog/aggregate-view.jpg"/>
+<img src="../../../../images/blog/aggregate-view.jpg"/>
 
 <!-- wp:paragraph -->
 As you can see, the GSI made customer id as the primary key and projected all other attributes related to order in this view.
@@ -284,9 +284,9 @@ While single table design in DynamoDB can be powerful and efficient for many typ
 	Single table design is based on the primary key, if the access patterns are not predictable it could lead to uneven distribution of the data and cause hot partitions. In this case, you might want to consider using a different database solution like Amazon RDS, which allows you to create read replicas to handle uneven read workloads.
 
 <!-- wp:paragraph -->
-The article is quite long, however I beleive we have just scratched the surface of this design technique. For further reading I would advise to refer to the AWS documentation on DynamoDB and watch <a href="https://www.youtube.com/watch?v=Xn12QSNa4RE">this video</a>.
+The article is quite long, however I beleive we have just scratched the surface of this design technique. For further reading I would advise to refer to the AWS documentation on DynamoDB and watch <a href="https://www.youtube.com/watch?v=Xn12QSNa4RE" target="_blank" rel="noopener" data-mce-href="https://www.youtube.com/watch?v=Xn12QSNa4RE">this video</a>.
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-Please <a href="https://ashishvegaraju.com/contact">contact me</a> if you have any questions on this topic and feel free to share it with others if you think it is helpful!
+Please <a href="https://ashishvegaraju.com/contact" target="_blank" rel="noopener" data-mce-href="https://ashishvegaraju.com/contact">contact me</a> if you have any questions on this topic and feel free to share it with others if you think it is helpful!
 <!-- /wp:paragraph -->
