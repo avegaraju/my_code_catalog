@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AWS DynamoDb : A tale of single table
+title: AWS DynamoDb - A tale of single table
 date: 2023-01-13 00:09
 author: avegaraju
 comments: true
