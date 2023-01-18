@@ -71,9 +71,9 @@ Using the same example mentioned before, let's say you want to query all orders 
 <!-- /wp:paragraph -->
 
 
-<!-- wp:preformatted -->
-<pre class="wp-block-preformatted">I am using [No Sql Workbench](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html "NoSQL Workbench") to model the database table below. I highly recommend to use this tool for modeling, as it makes it easy to quickly visualize the changes made on the model.</pre>
-<!-- /wp:preformatted -->
+<!-- wp:quote -->
+I am using <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html" target="_blank" rel="noopener" data-mce-href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html">[No Sql Workbench]</a> to model the database table below. I highly recommend to use this tool for modeling, as it makes it easy to quickly visualize the changes made on the model.
+<!-- /wp:quote -->
 
 <!-- wp:paragraph -->
 Pictures are worth 1000 words, so here is a screenshot of how the table is designed with primary and sort key with different attributes. 
@@ -284,7 +284,7 @@ While single table design in DynamoDB can be powerful and efficient for many typ
 	Single table design is based on the primary key, if the access patterns are not predictable it could lead to uneven distribution of the data and cause hot partitions. In this case, you might want to consider using a different database solution like Amazon RDS, which allows you to create read replicas to handle uneven read workloads.
 
 <!-- wp:paragraph -->
-The article is quite long, however I beleive we have just scratched the surface of this design technique. For further reading I would advise to refer to the AWS documentation on DynamoDB and watch <a href="https://www.youtube.com/watch?v=Xn12QSNa4RE" target="_blank" rel="noopener" data-mce-href="https://www.youtube.com/watch?v=Xn12QSNa4RE">this video</a>.
+The article is quite long, however I believe we have just scratched the surface of this design technique. For further reading I would advise to refer to the AWS documentation on DynamoDB and watch <a href="https://www.youtube.com/watch?v=Xn12QSNa4RE" target="_blank" rel="noopener" data-mce-href="https://www.youtube.com/watch?v=Xn12QSNa4RE">this video</a>.
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
