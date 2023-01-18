@@ -71,9 +71,10 @@ Using the same example mentioned before, let's say you want to query all orders 
 <!-- /wp:paragraph -->
 
 
-<!-- wp:quote -->
+```
+**Note**
 I am using <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html" target="_blank" rel="noopener" data-mce-href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html">[No Sql Workbench]</a> to model the database table below. I highly recommend to use this tool for modeling, as it makes it easy to quickly visualize the changes made on the model.
-<!-- /wp:quote -->
+```
 
 <!-- wp:paragraph -->
 Pictures are worth 1000 words, so here is a screenshot of how the table is designed with primary and sort key with different attributes. 
