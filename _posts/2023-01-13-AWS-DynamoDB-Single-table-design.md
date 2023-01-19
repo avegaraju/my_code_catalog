@@ -268,8 +268,3 @@ The article is quite long, however I believe I've just scratched the surface of 
 <!-- wp:paragraph -->
 Please <a href="https://ashishvegaraju.com/contact" target="_blank" rel="noopener" data-mce-href="https://ashishvegaraju.com/contact">contact me</a> if you have any questions on this topic and feel free to share it with others if you think it is useful!
 <!-- /wp:paragraph -->
-
-<!-- wp:paragraph{"font-size":8px} -->
-top image credit: 
-free background photos from https://pngtree.com/freebackground/blurred-bokeh-light-with-light-blue-sparkle_1180127.html?sol=downref&id=bef
-<!-- /wp:paragraph -->
