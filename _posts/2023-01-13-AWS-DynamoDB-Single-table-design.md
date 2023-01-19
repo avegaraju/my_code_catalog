@@ -6,7 +6,7 @@ author: avegaraju
 comments: true
 categories: [Single table design, AWS, dynamoDB]
 ---
-<img src="../../../../images/blog/banner.jpg" width="100%" height = "200px" />
+<img src="../../../../images/blog/banner.jpg" width="100%" height = "300px" />
 
 # <span style="text-transform: capitalize"> AWS DynamoDB : My notes on single table design
 
@@ -271,7 +271,7 @@ The article is quite long, however I believe I've just scratched the surface of 
 Please <a href="https://ashishvegaraju.com/contact" target="_blank" rel="noopener" data-mce-href="https://ashishvegaraju.com/contact">contact me</a> if you have any questions on this topic and feel free to share it with others if you think it is useful!
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph -->
-<p style="font-size="8px">top image credit: 
-free background photos from https://pngtree.com/freebackground/blurred-bokeh-light-with-light-blue-sparkle_1180127.html?sol=downref&id=bef </p>
+<!-- wp:paragraph{"font-size":8px} -->
+top image credit: 
+free background photos from https://pngtree.com/freebackground/blurred-bokeh-light-with-light-blue-sparkle_1180127.html?sol=downref&id=bef
 <!-- /wp:paragraph -->
