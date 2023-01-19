@@ -8,8 +8,6 @@ categories: [Single table design, AWS, dynamoDB]
 ---
 <img src="../../../../images/blog/banner.jpg" width="100%" height = "300px" />
 
-# <span style="text-transform: capitalize"> AWS DynamoDB : My notes on single table design
-
 <!-- wp:paragraph -->
 <span style="font-size:xx-large">W</span>hen it comes to designing a data store for your application, there are many options to choose from, each with its own set of advantages and disadvantages. One option that is gaining popularity among developers is using a single table of Amazon DynamoDB. Also, Amazon strongly recommends designing single table for most of the applications. We recently experimented with using a single table for one of our applications at work and through this article, I will be sharing my experience. I will be discussing the advantages and limitations of using a single table design, as well as the best practices that I researched and learned along the way. We ended up using basic modeling techniques at work, however this article is intended to also share the research I did about some advanced single table design techniques and possible pitfalls. Whether you're just getting started with DynamoDB or are a seasoned developer, this article might provide some insights into how to effectively use or design a single table. 
 <!-- /wp:paragraph -->
