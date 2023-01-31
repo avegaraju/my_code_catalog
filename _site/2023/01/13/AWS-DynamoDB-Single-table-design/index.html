@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>AWS DynamoDB - My notes on single table design | My code catalog</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="AWS DynamoDB - My notes on single table design" />
+<meta name="author" content="avegaraju" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="/2023/01/13/AWS-DynamoDB-Single-table-design/" />
+<meta property="og:url" content="/2023/01/13/AWS-DynamoDB-Single-table-design/" />
+<meta property="og:site_name" content="My code catalog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-01-13T00:09:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="AWS DynamoDB - My notes on single table design" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"/2023/01/13/AWS-DynamoDB-Single-table-design/"},"@type":"BlogPosting","url":"/2023/01/13/AWS-DynamoDB-Single-table-design/","author":{"@type":"Person","name":"avegaraju"},"headline":"AWS DynamoDB - My notes on single table design","dateModified":"2023-01-13T00:09:00+01:00","datePublished":"2023-01-13T00:09:00+01:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="My code catalog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">My code catalog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">AWS DynamoDB - My notes on single table design</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-01-13T00:09:00+01:00" itemprop="datePublished">Jan 13, 2023
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">avegaraju</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><img src="../../../../images/blog/banner.jpg" width="100%" height="300px" /></p>
+
+<!-- wp:paragraph -->
+<p><span style="font-size:xx-large">W</span>hen it comes to designing a data store for your application, there are many options to choose from, each with its own set of advantages and disadvantages. One option that is gaining popularity among developers is using a single table of Amazon DynamoDB. Also, Amazon strongly recommends designing single table for most of the applications. We recently experimented with using a single table for one of our applications at work and through this article, I will be sharing my experience. I will be discussing the advantages and limitations of using a single table design, as well as the best practices that I researched and learned along the way. We ended up using basic modeling techniques at work, however this article is intended to also share the research I did about some advanced single table design techniques and possible pitfalls. This article might provide some insights into how to effectively use or design a single table. 
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+
+<p>Its always best to come to a common understanding of what is meant by single table design. So Let’s start from basics:</p>
+
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2} -->
+<h2>Introduction</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>In DynamoDB, single-table design is a method of storing all data in a single table, rather than using multiple tables for different data types or use cases. This approach is achieved by using a composite primary key, which consists of both a partition key and a sort key.
+A composite primary key allows you to store multiple data types or entities in a single table, while still being able to retrieve and query data efficiently. 
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>For example, imagine you have an e-commerce application and you want to store data about customers, orders, and products. With single-table design, you could store all of this data in a single DynamoDB table, using the partition key to distinguish between different types of data, and the sort key to sort data within each partition.
+Here’s an example of how you might set up a table:
+<!-- /wp:paragraph --></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| partition key  | sort key     | other attributes|
+---------------------------------------------------
+| "customer"     | "customer_id"| name, address, etc|
+---------------------------------------------------
+| "order"        | "order_id"   | customer_id, total, etc |
+---------------------------------------------------
+| "product"      | "product_id" | name, price, etc       |
+
+</code></pre></div></div>
+<!-- wp:paragraph -->
+<p>In this example, the partition key is “entity” and the sort key is “entity_id” . This table can have many other attributes like name, address, price etc. Using this structure, you can retrieve all orders  by using the “order” partition key and order_id as the sort key. Or you can retrieve all product details for a specific product by using “product” as the partition key and the product_id as the sort key.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>With basic definition out of our way, lets dive into the bend of mind that is required to design such a table. Before starting to design a table you have to come up with ways in which you’d like to access data from this table. This is commonly known as “Access Pattern”. In fact, in the previous paragraph what you read about retrieving data with the help of partition and sort keys are indeed access patterns. Coming up with access patterns at the beginning helps to model the table better.
+<!-- wp:paragraph --></p>
+
+<!-- wp:heading {"level":2} -->
+<h2 id="access-patterns-explained">Access Patterns explained</h2>
+<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p>Needless to say, just having a partition and sort key on a table cannot support all the possible access patterns. For instance, what if I want to retrieve all orders for a given customer? As you can see in the above table, there is no way you can query that information. This is where GSIs, abbreviation for Global Secondary Index comes to rescue. 
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+Let’s take a look at GSIs and try to understand that with help of an example.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:heading {"level":2} -->
+<h3 id="global-secondary-indexes">Global Secondary Indexes</h3>
+<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p>A global secondary index (GSI) in Amazon DynamoDB is a secondary index that has a different partition key than the primary key of the table. This allows you to create and maintain one or more secondary indexes on your DynamoDB table in addition to the primary index.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>Using the same example mentioned before, let’s say you want to query all orders for a give customer_id then you might want to create a GSI on the table to support this access pattern. This GSI would have customer_id as the primary key. 
+<!-- /wp:paragraph --></p>
+
+<p><strong>Note</strong>
+I am using <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html" target="_blank" rel="noopener" data-mce-href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html">[No Sql Workbench]</a> to model the database table below. I highly recommend to use this tool for modeling, as it makes it easy to quickly visualize the changes made on the model.</p>
+
+<!-- wp:paragraph -->
+<p>Pictures are worth 1000 words, so here is a screenshot of how the table is designed with primary and sort key with different attributes. 
+<!-- /wp:paragraph --></p>
+
+<p><img src="../../../../images/blog/table-with-attributes.jpg" /></p>
+
+<!-- wp:paragraph -->
+<p>Here is the screenshot of GSI to support the access pattern of accessing orders based on a customer_id
+<!-- /wp:paragraph --></p>
+
+<p><img src="../../../../images/blog/gsi-orders-by-customer.jpg" /></p>
+
+<!-- wp:paragraph -->
+<p>I added some dummy data to show how the GSI was able to support our access pattern.
+<!-- /wp:paragraph --></p>
+
+<p><img src="../../../../images/blog/aggregate-view.jpg" /></p>
+
+<!-- wp:paragraph -->
+<p>As you can see, the GSI made customer id as the primary key and projected all other attributes related to order in this view.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>Similarly its is easy to create GSIs to support additional patterns in future.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>GSI is not the only way to support additional access patterns, there are three more ways to support additional access patterns:
+<!-- /wp:paragraph --></p>
+
+<ul>
+  <li>
+    <p>Local Secondary Index (LSI): Similar to GSI but only allows to use the same partition key but different sort key. It can be useful if you only need to change the sort key and are fine with the queries always happening within a single partition.</p>
+  </li>
+  <li>
+    <p>Scans and Queries: Another option is to use the Scan and Query operations provided by DynamoDB. These operations allow you to retrieve data from your table based on any attribute, but they can be less efficient than using a well-designed index. Scans and queries can be useful when you need to perform ad-hoc queries or retrieve data that doesn’t fit easily into a predefined index.</p>
+  </li>
+  <li>
+    <p>Dynamic Attributes: You can also make your schema more flexible by allowing dynamic attributes. This allows you to add arbitrary new attributes to your table, allowing you to store more information on your items, and potentially, enable new access patterns with it. For instance, you can create an attribute of type <code class="language-plaintext highlighter-rouge">map</code> and add data in the form of key value pairs. In the below schema, dynamic_attribute is a map and it can store any additional information that might be required about a customer</p>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "pk": "customer#1",
+    "sk": "info",
+    "name": "John Smith",
+    "email": "john.smith@test.com",
+    "dynamic_attribute": {
+        "phoneNumber": "+31 67777777",
+        "address": "123 some street, 3332AA"
+    }
+}
+</code></pre></div></div>
+
+<!-- wp:heading {"level":4} -->
+<p><strong>Note</strong>
+<!-- /wp:heading {"level":2} -->
+<!-- wp:paragraph -->
+It’s important to keep in mind that adding new access patterns to an existing table can have an impact on the performance and cost of your application, so you should carefully evaluate any changes you make. For example, creating new GSIs can increase the amount of data stored in your table and the read/write capacity needed to support them.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:heading {"level":2} -->
+<h2 id="guidance-for-creating-partition-key-for-high-volume-applications">Guidance for creating partition key for high volume applications</h2>
+<!-- /wp:heading {"level":4} -->
+
+<!-- wp:paragraph -->
+<p>When you choose an appropriate partition key, it should be chosen in such a way that it naturally distributes the requests across partitions in an even manner. This can be achieved by choosing a partition key that has a high cardinality, meaning that it has a large number of unique values. This will ensure that the requests are spread across multiple partitions and reduce the chance of a hot partition (more about this is explained below).
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>For example, if you have an e-commerce application and want to store information about different products, you could choose the product id as a partition key. This would ensure that the requests for different products are spread across different partitions and would reduce the chance of a hot partition.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>Another example is if you have a customer data on DynamoDB and you have customer Id as partition key but most of the requests are for a specific customer then customer Id partition will become hot partition. To avoid this, you can use salted partition keys, where you add some random value to partition key before storing, this will ensure that requests are spread across all partitions.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:heading {"level":2} -->
+<h2 id="consequences-of-bad-design">Consequences of bad design</h2>
+<!-- /wp:heading {"level":2} -->
+
+<!-- wp:paragraph -->
+<p>There are consequences of wrong choice of partition keys. A wrong choice may lead to a specific partition to be accessed over and over again resulting in creating a so called “Hot partition”.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:heading {"level":3} -->
+<h4 id="hot-partition">Hot Partition</h4>
+<!-- /wp:heading {"level":3} -->
+
+<!-- wp:paragraph -->
+<p>Hot partition can occur when the access patterns of a single table design are not well-distributed across the table’s partition key, resulting in a disproportionate number of requests going to a single partition. This can cause performance issues, such as increased latency and throttling.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>A common cause of hot partitions is when the access pattern is not evenly distributed. For example, if most of the requests are for a specific partition key value then that partition will become hot.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:heading {"level":3} -->
+<h4 id="mitigation-techniques">Mitigation techniques</h4>
+<!-- /wp:heading {"level":3} -->
+
+<!-- wp:paragraph -->
+<p>There are several ways to mitigate hot partitions in DynamoDB Single Table Design:
+<!-- /wp:paragraph --></p>
+
+<ul>
+  <li>
+    <p><strong>Scaling:</strong> One way to address hot partitions is to scale the read and write capacity of the table to handle the increased traffic.</p>
+  </li>
+  <li>
+    <p><strong>Spread the access evenly:</strong> By choosing an appropriate partition key and distributing the access patterns evenly across the partition key, you can reduce the likelihood of hot partitions.</p>
+  </li>
+  <li>
+    <p><strong>Use advanced partitioning techniques:</strong> By using advanced partitioning techniques like dynamic partitioning, where the partition key is computed at runtime based on the data, you can also reduce the likelihood of hot partitions. More on this a later.</p>
+  </li>
+  <li>
+    <p><strong>Use Time To Live (TTL) attribute:</strong> you can use DynamoDB’s TTL feature to automatically delete old data, which can help to avoid hot partitions caused by stale data.</p>
+  </li>
+  <li>
+    <p><strong>Use read replicas:</strong> If you are using a single table design and the read hot partition is a concern, you can make use of read replicas. This will replicate the data to multiple tables and read requests can be distributed across them.</p>
+  </li>
+</ul>
+
+<!-- wp:heading {"level":3} -->
+<h3 id="dynamic-partitioning">Dynamic partitioning</h3>
+<!-- /wp:heading {"level":3} -->
+
+<!-- wp:paragraph -->
+<p>Dynamic partitioning in DynamoDB is a technique that allows you to spread data across multiple partitions by changing the partition key based on the data. This can be useful when dealing with large amounts of data, or when you expect the access patterns to change over time.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>One way to achieve dynamic partitioning in DynamoDB is to use a computed partition key. For example, instead of using a simple partition key like a user ID, you could use a hash of the user ID combined with a timestamp. This way, new items with the same user ID will be spread across different partitions based on the timestamp, reducing the chance of a hot partition caused by a monotonically increasing partition key.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>Another way to achieve dynamic partitioning is to use a partition key that is derived from the data. For example, if you are storing documents, you could use the first letter of the document title as the partition key. This way, the data will be spread across partitions based on the first letter of the title, and the access patterns will be evenly distributed.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>Here is an example of how you could use dynamic partitioning to store tweets in DynamoDB:
+<!-- /wp:paragraph --></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var date = DateTime.Now;
+var timestamp = date.Ticks;
+var tweetText = "This is my tweet!";
+var tweetUserId = "1001";
+
+using (var md5 = MD5.Create())
+{
+    var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(tweetUserId));
+    var partitionKey = $"tweet_{BitConverter.ToString(hash).Replace("-", "")}_{timestamp}";
+    var doc = new Document();
+    doc["partitionKey"] = partitionKey;
+    doc["tweet"] = tweetText;
+    doc["tweetUserId"] = tweetUserId;
+    var client = new AmazonDynamoDBClient();
+    var request = new PutItemRequest
+    {
+        TableName = "tweets",
+        Item = doc
+    };
+    var response = await client.PutItemAsync(request);
+}
+
+</code></pre></div></div>
+
+<!-- wp:paragraph -->
+<p>here the partition key <code class="language-plaintext highlighter-rouge">partitionKey</code> is generated by concatenating the hash of the <code class="language-plaintext highlighter-rouge">tweetUserId</code> and a timestamp. This ensures that tweets by the same tweet user are spread across different partitions based on the timestamp and not clustered on the same partition key, thus reducing the chance of hot partition.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:heading {"level":2} -->
+<h2 id="when-to-avoid-single-table-design">When to avoid single table design</h2>
+<!-- /wp:heading {"level":3} -->
+
+<!-- wp:paragraph -->
+<p>While single table design in DynamoDB can be powerful and efficient for many types of applications, there are certain cases where it may not be the best choice. Here are a few examples of when a single table design might not be suitable:
+<!-- /wp:paragraph --></p>
+
+<ul>
+  <li>
+    <p><strong>Applications with highly relational data:</strong></p>
+
+    <p>Single table design can work well for storing denormalized data, but if your data has complex relationships and you need to perform joins across tables, a single table design may not be the best option. In this case, it may be more appropriate to use a relational database like Amazon RDS or MySQL.</p>
+  </li>
+  <li>
+    <p><strong>Applications with very high write loads:</strong></p>
+
+    <p>Single table design allows you to horizontally scale your read and write capacity, but if your application requires extremely high write loads, it may be more cost-effective to use a different storage solution that is optimized for write-intensive workloads, such as Amazon S3 or Amazon Redshift.</p>
+  </li>
+  <li>
+    <p><strong>Applications that need advanced query capabilities:</strong></p>
+
+    <p>While single table design can support complex filtering and sorting using global secondary indexes and Elasticsearch, some applications may require more advanced querying capabilities like geospatial indexing and full-text search. In this case, it might be more appropriate to use a different database solution such as Amazon Elasticsearch service or Amazon RDS for PostgreSQL.</p>
+  </li>
+  <li>
+    <p><strong>Applications that need to support very large items:</strong></p>
+
+    <p>DynamoDB has a limit of 400 KB for item size. If your item size is likely to exceed this limit, then you may need to consider using a different storage solution like Amazon S3 or Amazon Redshift</p>
+  </li>
+  <li>
+    <p><strong>Applications with unpredictable access patterns:</strong></p>
+
+    <p>Single table design is based on the primary key, if the access patterns are not predictable it could lead to uneven distribution of the data and cause hot partitions. In this case, you might want to consider using a different database solution like Amazon RDS, which allows you to create read replicas to handle uneven read workloads.</p>
+  </li>
+</ul>
+
+<!-- wp:paragraph -->
+<p>The article is quite long, however I believe I’ve just scratched the surface of this design technique. For further reading I would advise to refer to the <a href="https://docs.aws.amazon.com/dynamodb/index.html" target="_blank" rel="noopener" data-mce-href="https://docs.aws.amazon.com/dynamodb/index.html">AWS documentation on DynamoDB</a> and watch <a href="https://www.youtube.com/watch?v=Xn12QSNa4RE" target="_blank" rel="noopener" data-mce-href="https://www.youtube.com/watch?v=Xn12QSNa4RE">this video</a> (a bit lengthy, but worth watching) by Rick Houlihan where he explained the technique quite nicely.
+<!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+<p>Please <a href="https://ashishvegaraju.com/contact" target="_blank" rel="noopener" data-mce-href="https://ashishvegaraju.com/contact">contact me</a> if you have any questions on this topic and feel free to share it with others if you think it is useful!
+<!-- /wp:paragraph --></p>
+
+  </div><a class="u-url" href="/2023/01/13/AWS-DynamoDB-Single-table-design/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">My code catalog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">My code catalog</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/avegaraju"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">avegaraju</span></a></li><li><a href="https://www.twitter.com/ashishvegaraju"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">ashishvegaraju</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

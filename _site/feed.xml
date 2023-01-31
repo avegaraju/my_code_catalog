@@ -1,4 +1,660 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-04-04T23:54:16+02:00</updated><id>/feed.xml</id><title type="html">My code catalog</title><subtitle>test.</subtitle><entry><title type="html">Test doubles ; Over the wire</title><link href="/2019/03/01/test-doubles-over-the-wire/" rel="alternate" type="text/html" title="Test doubles ; Over the wire" /><published>2019-03-01T00:09:00+01:00</published><updated>2019-03-01T00:09:00+01:00</updated><id>/2019/03/01/test-doubles-over-the-wire</id><content type="html" xml:base="/2019/03/01/test-doubles-over-the-wire/">&lt;!-- wp:paragraph {&quot;customFontSize&quot;:12} --&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-01-31T22:02:16+01:00</updated><id>/feed.xml</id><title type="html">My code catalog</title><subtitle></subtitle><entry><title type="html">AWS Appsync adventure</title><link href="/2023/01/31/AWS-appsync-adventure/" rel="alternate" type="text/html" title="AWS Appsync adventure" /><published>2023-01-31T00:09:00+01:00</published><updated>2023-01-31T00:09:00+01:00</updated><id>/2023/01/31/AWS-appsync-adventure</id><content type="html" xml:base="/2023/01/31/AWS-appsync-adventure/">&lt;h1 id=&quot;welcome-to-stackedit&quot;&gt;Welcome to StackEdit!&lt;/h1&gt;
+
+&lt;p&gt;Hi! I’m your first Markdown file in &lt;strong&gt;StackEdit&lt;/strong&gt;. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the &lt;strong&gt;file explorer&lt;/strong&gt; on the left corner of the navigation bar.&lt;/p&gt;
+
+&lt;h1 id=&quot;files&quot;&gt;Files&lt;/h1&gt;
+
+&lt;p&gt;StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible &lt;strong&gt;offline!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;create-files-and-folders&quot;&gt;Create files and folders&lt;/h2&gt;
+
+&lt;p&gt;The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the &lt;strong&gt;New file&lt;/strong&gt; button in the file explorer. You can also create folders by clicking the &lt;strong&gt;New folder&lt;/strong&gt; button.&lt;/p&gt;
+
+&lt;h2 id=&quot;switch-to-another-file&quot;&gt;Switch to another file&lt;/h2&gt;
+
+&lt;p&gt;All your files and folders are presented as a tree in the file explorer. You can switch from one to another by clicking a file in the tree.&lt;/p&gt;
+
+&lt;h2 id=&quot;rename-a-file&quot;&gt;Rename a file&lt;/h2&gt;
+
+&lt;p&gt;You can rename the current file by clicking the file name in the navigation bar or by clicking the &lt;strong&gt;Rename&lt;/strong&gt; button in the file explorer.&lt;/p&gt;
+
+&lt;h2 id=&quot;delete-a-file&quot;&gt;Delete a file&lt;/h2&gt;
+
+&lt;p&gt;You can delete the current file by clicking the &lt;strong&gt;Remove&lt;/strong&gt; button in the file explorer. The file will be moved into the &lt;strong&gt;Trash&lt;/strong&gt; folder and automatically deleted after 7 days of inactivity.&lt;/p&gt;
+
+&lt;h2 id=&quot;export-a-file&quot;&gt;Export a file&lt;/h2&gt;
+
+&lt;p&gt;You can export the current file by clicking &lt;strong&gt;Export to disk&lt;/strong&gt; in the menu. You can choose to export the file as plain Markdown, as HTML using a Handlebars template or as a PDF.&lt;/p&gt;
+
+&lt;h1 id=&quot;synchronization&quot;&gt;Synchronization&lt;/h1&gt;
+
+&lt;p&gt;Synchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your &lt;strong&gt;Google Drive&lt;/strong&gt;, your &lt;strong&gt;Dropbox&lt;/strong&gt; and your &lt;strong&gt;GitHub&lt;/strong&gt; accounts. This allows you to keep writing on other devices, collaborate with people you share the file with, integrate easily into your workflow… The synchronization mechanism takes place every minute in the background, downloading, merging, and uploading file modifications.&lt;/p&gt;
+
+&lt;p&gt;There are two types of synchronization and they can complement each other:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The workspace synchronization will sync all your files, folders and settings automatically. This will allow you to fetch your workspace on any other device.
+    &lt;blockquote&gt;
+      &lt;p&gt;To start syncing your workspace, just sign in with Google in the menu.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The file synchronization will keep one file of the workspace synced with one or multiple files in &lt;strong&gt;Google Drive&lt;/strong&gt;, &lt;strong&gt;Dropbox&lt;/strong&gt; or &lt;strong&gt;GitHub&lt;/strong&gt;.
+    &lt;blockquote&gt;
+      &lt;p&gt;Before starting to sync files, you must link an account in the &lt;strong&gt;Synchronize&lt;/strong&gt; sub-menu.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;open-a-file&quot;&gt;Open a file&lt;/h2&gt;
+
+&lt;p&gt;You can open a file from &lt;strong&gt;Google Drive&lt;/strong&gt;, &lt;strong&gt;Dropbox&lt;/strong&gt; or &lt;strong&gt;GitHub&lt;/strong&gt; by opening the &lt;strong&gt;Synchronize&lt;/strong&gt; sub-menu and clicking &lt;strong&gt;Open from&lt;/strong&gt;. Once opened in the workspace, any modification in the file will be automatically synced.&lt;/p&gt;
+
+&lt;h2 id=&quot;save-a-file&quot;&gt;Save a file&lt;/h2&gt;
+
+&lt;p&gt;You can save any file of the workspace to &lt;strong&gt;Google Drive&lt;/strong&gt;, &lt;strong&gt;Dropbox&lt;/strong&gt; or &lt;strong&gt;GitHub&lt;/strong&gt; by opening the &lt;strong&gt;Synchronize&lt;/strong&gt; sub-menu and clicking &lt;strong&gt;Save on&lt;/strong&gt;. Even if a file in the workspace is already synced, you can save it to another location. StackEdit can sync one file with multiple locations and accounts.&lt;/p&gt;
+
+&lt;h2 id=&quot;synchronize-a-file&quot;&gt;Synchronize a file&lt;/h2&gt;
+
+&lt;p&gt;Once your file is linked to a synchronized location, StackEdit will periodically synchronize it by downloading/uploading any modification. A merge will be performed if necessary and conflicts will be resolved.&lt;/p&gt;
+
+&lt;p&gt;If you just have modified your file and you want to force syncing, click the &lt;strong&gt;Synchronize now&lt;/strong&gt; button in the navigation bar.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;strong&gt;Synchronize now&lt;/strong&gt; button is disabled if you have no file to synchronize.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;manage-file-synchronization&quot;&gt;Manage file synchronization&lt;/h2&gt;
+
+&lt;p&gt;Since one file can be synced with multiple locations, you can list and manage synchronized locations by clicking &lt;strong&gt;File synchronization&lt;/strong&gt; in the &lt;strong&gt;Synchronize&lt;/strong&gt; sub-menu. This allows you to list and remove synchronized locations that are linked to your file.&lt;/p&gt;
+
+&lt;h1 id=&quot;publication&quot;&gt;Publication&lt;/h1&gt;
+
+&lt;p&gt;Publishing in StackEdit makes it simple for you to publish online your files. Once you’re happy with a file, you can publish it to different hosting platforms like &lt;strong&gt;Blogger&lt;/strong&gt;, &lt;strong&gt;Dropbox&lt;/strong&gt;, &lt;strong&gt;Gist&lt;/strong&gt;, &lt;strong&gt;GitHub&lt;/strong&gt;, &lt;strong&gt;Google Drive&lt;/strong&gt;, &lt;strong&gt;WordPress&lt;/strong&gt; and &lt;strong&gt;Zendesk&lt;/strong&gt;. With &lt;a href=&quot;http://handlebarsjs.com/&quot;&gt;Handlebars templates&lt;/a&gt;, you have full control over what you export.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Before starting to publish, you must link an account in the &lt;strong&gt;Publish&lt;/strong&gt; sub-menu.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;publish-a-file&quot;&gt;Publish a File&lt;/h2&gt;
+
+&lt;p&gt;You can publish your file by opening the &lt;strong&gt;Publish&lt;/strong&gt; sub-menu and by clicking &lt;strong&gt;Publish to&lt;/strong&gt;. For some locations, you can choose between the following formats:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Markdown: publish the Markdown text on a website that can interpret it (&lt;strong&gt;GitHub&lt;/strong&gt; for instance),&lt;/li&gt;
+  &lt;li&gt;HTML: publish the file converted to HTML via a Handlebars template (on a blog for example).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;update-a-publication&quot;&gt;Update a publication&lt;/h2&gt;
+
+&lt;p&gt;After publishing, StackEdit keeps your file linked to that publication which makes it easy for you to re-publish it. Once you have modified your file and you want to update your publication, click on the &lt;strong&gt;Publish now&lt;/strong&gt; button in the navigation bar.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;strong&gt;Publish now&lt;/strong&gt; button is disabled if your file has not been published yet.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;manage-file-publication&quot;&gt;Manage file publication&lt;/h2&gt;
+
+&lt;p&gt;Since one file can be published to multiple locations, you can list and manage publish locations by clicking &lt;strong&gt;File publication&lt;/strong&gt; in the &lt;strong&gt;Publish&lt;/strong&gt; sub-menu. This allows you to list and remove publication locations that are linked to your file.&lt;/p&gt;
+
+&lt;h1 id=&quot;markdown-extensions&quot;&gt;Markdown extensions&lt;/h1&gt;
+
+&lt;p&gt;StackEdit extends the standard Markdown syntax by adding extra &lt;strong&gt;Markdown extensions&lt;/strong&gt;, providing you with some nice features.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;ProTip:&lt;/strong&gt; You can disable any &lt;strong&gt;Markdown extension&lt;/strong&gt; in the &lt;strong&gt;File properties&lt;/strong&gt; dialog.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;smartypants&quot;&gt;SmartyPants&lt;/h2&gt;
+
+&lt;p&gt;SmartyPants converts ASCII punctuation characters into “smart” typographic punctuation HTML entities. For example:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;ASCII&lt;/th&gt;
+      &lt;th&gt;HTML&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Single backticks&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'Isn't this fun?'&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;‘Isn’t this fun?’&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Quotes&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;Isn't this fun?&quot;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;“Isn’t this fun?”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Dashes&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-- is en-dash, --- is em-dash&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;– is en-dash, — is em-dash&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;katex&quot;&gt;KaTeX&lt;/h2&gt;
+
+&lt;p&gt;You can render LaTeX mathematical expressions using &lt;a href=&quot;https://khan.github.io/KaTeX/&quot;&gt;KaTeX&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;Gamma function&lt;/em&gt; satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral&lt;/p&gt;
+
+\[\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.\]
+
+&lt;blockquote&gt;
+  &lt;p&gt;You can find more information about &lt;strong&gt;LaTeX&lt;/strong&gt; mathematical expressions &lt;a href=&quot;http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;uml-diagrams&quot;&gt;UML diagrams&lt;/h2&gt;
+
+&lt;p&gt;You can render UML diagrams using &lt;a href=&quot;https://mermaidjs.github.io/&quot;&gt;Mermaid&lt;/a&gt;. For example, this will produce a sequence diagram:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;sequenceDiagram
+Alice -&amp;gt;&amp;gt; Bob: Hello Bob, how are you?
+Bob--&amp;gt;&amp;gt;John: How about you John?
+Bob--x Alice: I am good thanks!
+Bob-x John: I am good thanks!
+Note right of John: Bob thinks a long&amp;lt;br/&amp;gt;long time, so long&amp;lt;br/&amp;gt;that the text does&amp;lt;br/&amp;gt;not fit on a row.
+
+Bob--&amp;gt;Alice: Checking with John...
+Alice-&amp;gt;John: Yes... John, how are you?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And this will produce a flow chart:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+A[Square Rect] -- Link text --&amp;gt; B((Circle))
+A --&amp;gt; C(Round Rect)
+B --&amp;gt; D{Rhombus}
+C --&amp;gt; D
+&lt;/code&gt;&lt;/pre&gt;</content><author><name>avegaraju</name></author><category term="AWS" /><category term="appsync" /><category term="graphql" /><summary type="html">Welcome to StackEdit!</summary></entry><entry><title type="html">AWS DynamoDB - My notes on single table design</title><link href="/2023/01/13/AWS-DynamoDB-Single-table-design/" rel="alternate" type="text/html" title="AWS DynamoDB - My notes on single table design" /><published>2023-01-13T00:09:00+01:00</published><updated>2023-01-13T00:09:00+01:00</updated><id>/2023/01/13/AWS-DynamoDB-Single-table-design</id><content type="html" xml:base="/2023/01/13/AWS-DynamoDB-Single-table-design/">&lt;p&gt;&lt;img src=&quot;../../../../images/blog/banner.jpg&quot; width=&quot;100%&quot; height=&quot;300px&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;&lt;span style=&quot;font-size:xx-large&quot;&gt;W&lt;/span&gt;hen it comes to designing a data store for your application, there are many options to choose from, each with its own set of advantages and disadvantages. One option that is gaining popularity among developers is using a single table of Amazon DynamoDB. Also, Amazon strongly recommends designing single table for most of the applications. We recently experimented with using a single table for one of our applications at work and through this article, I will be sharing my experience. I will be discussing the advantages and limitations of using a single table design, as well as the best practices that I researched and learned along the way. We ended up using basic modeling techniques at work, however this article is intended to also share the research I did about some advanced single table design techniques and possible pitfalls. This article might provide some insights into how to effectively use or design a single table. 
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+
+&lt;p&gt;Its always best to come to a common understanding of what is meant by single table design. So Let’s start from basics:&lt;/p&gt;
+
+&lt;!-- /wp:paragraph --&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:2} --&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;!-- /wp:heading --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;In DynamoDB, single-table design is a method of storing all data in a single table, rather than using multiple tables for different data types or use cases. This approach is achieved by using a composite primary key, which consists of both a partition key and a sort key.
+A composite primary key allows you to store multiple data types or entities in a single table, while still being able to retrieve and query data efficiently. 
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;For example, imagine you have an e-commerce application and you want to store data about customers, orders, and products. With single-table design, you could store all of this data in a single DynamoDB table, using the partition key to distinguish between different types of data, and the sort key to sort data within each partition.
+Here’s an example of how you might set up a table:
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;| partition key  | sort key     | other attributes|
+---------------------------------------------------
+| &quot;customer&quot;     | &quot;customer_id&quot;| name, address, etc|
+---------------------------------------------------
+| &quot;order&quot;        | &quot;order_id&quot;   | customer_id, total, etc |
+---------------------------------------------------
+| &quot;product&quot;      | &quot;product_id&quot; | name, price, etc       |
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;In this example, the partition key is “entity” and the sort key is “entity_id” . This table can have many other attributes like name, address, price etc. Using this structure, you can retrieve all orders  by using the “order” partition key and order_id as the sort key. Or you can retrieve all product details for a specific product by using “product” as the partition key and the product_id as the sort key.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;With basic definition out of our way, lets dive into the bend of mind that is required to design such a table. Before starting to design a table you have to come up with ways in which you’d like to access data from this table. This is commonly known as “Access Pattern”. In fact, in the previous paragraph what you read about retrieving data with the help of partition and sort keys are indeed access patterns. Coming up with access patterns at the beginning helps to model the table better.
+&lt;!-- wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:2} --&gt;
+&lt;h2 id=&quot;access-patterns-explained&quot;&gt;Access Patterns explained&lt;/h2&gt;
+&lt;!-- /wp:heading --&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Needless to say, just having a partition and sort key on a table cannot support all the possible access patterns. For instance, what if I want to retrieve all orders for a given customer? As you can see in the above table, there is no way you can query that information. This is where GSIs, abbreviation for Global Secondary Index comes to rescue. 
+&lt;!-- /wp:paragraph --&gt;
+&lt;!-- wp:paragraph --&gt;
+Let’s take a look at GSIs and try to understand that with help of an example.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:2} --&gt;
+&lt;h3 id=&quot;global-secondary-indexes&quot;&gt;Global Secondary Indexes&lt;/h3&gt;
+&lt;!-- /wp:heading --&gt;
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;A global secondary index (GSI) in Amazon DynamoDB is a secondary index that has a different partition key than the primary key of the table. This allows you to create and maintain one or more secondary indexes on your DynamoDB table in addition to the primary index.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Using the same example mentioned before, let’s say you want to query all orders for a give customer_id then you might want to create a GSI on the table to support this access pattern. This GSI would have customer_id as the primary key. 
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;
+I am using &lt;a href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-mce-href=&quot;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html&quot;&gt;[No Sql Workbench]&lt;/a&gt; to model the database table below. I highly recommend to use this tool for modeling, as it makes it easy to quickly visualize the changes made on the model.&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Pictures are worth 1000 words, so here is a screenshot of how the table is designed with primary and sort key with different attributes. 
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../images/blog/table-with-attributes.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Here is the screenshot of GSI to support the access pattern of accessing orders based on a customer_id
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../images/blog/gsi-orders-by-customer.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;I added some dummy data to show how the GSI was able to support our access pattern.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../../../images/blog/aggregate-view.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;As you can see, the GSI made customer id as the primary key and projected all other attributes related to order in this view.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Similarly its is easy to create GSIs to support additional patterns in future.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;GSI is not the only way to support additional access patterns, there are three more ways to support additional access patterns:
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Local Secondary Index (LSI): Similar to GSI but only allows to use the same partition key but different sort key. It can be useful if you only need to change the sort key and are fine with the queries always happening within a single partition.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Scans and Queries: Another option is to use the Scan and Query operations provided by DynamoDB. These operations allow you to retrieve data from your table based on any attribute, but they can be less efficient than using a well-designed index. Scans and queries can be useful when you need to perform ad-hoc queries or retrieve data that doesn’t fit easily into a predefined index.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Dynamic Attributes: You can also make your schema more flexible by allowing dynamic attributes. This allows you to add arbitrary new attributes to your table, allowing you to store more information on your items, and potentially, enable new access patterns with it. For instance, you can create an attribute of type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt; and add data in the form of key value pairs. In the below schema, dynamic_attribute is a map and it can store any additional information that might be required about a customer&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    &quot;pk&quot;: &quot;customer#1&quot;,
+    &quot;sk&quot;: &quot;info&quot;,
+    &quot;name&quot;: &quot;John Smith&quot;,
+    &quot;email&quot;: &quot;john.smith@test.com&quot;,
+    &quot;dynamic_attribute&quot;: {
+        &quot;phoneNumber&quot;: &quot;+31 67777777&quot;,
+        &quot;address&quot;: &quot;123 some street, 3332AA&quot;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:4} --&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;
+&lt;!-- /wp:heading {&quot;level&quot;:2} --&gt;
+&lt;!-- wp:paragraph --&gt;
+It’s important to keep in mind that adding new access patterns to an existing table can have an impact on the performance and cost of your application, so you should carefully evaluate any changes you make. For example, creating new GSIs can increase the amount of data stored in your table and the read/write capacity needed to support them.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:2} --&gt;
+&lt;h2 id=&quot;guidance-for-creating-partition-key-for-high-volume-applications&quot;&gt;Guidance for creating partition key for high volume applications&lt;/h2&gt;
+&lt;!-- /wp:heading {&quot;level&quot;:4} --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;When you choose an appropriate partition key, it should be chosen in such a way that it naturally distributes the requests across partitions in an even manner. This can be achieved by choosing a partition key that has a high cardinality, meaning that it has a large number of unique values. This will ensure that the requests are spread across multiple partitions and reduce the chance of a hot partition (more about this is explained below).
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;For example, if you have an e-commerce application and want to store information about different products, you could choose the product id as a partition key. This would ensure that the requests for different products are spread across different partitions and would reduce the chance of a hot partition.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Another example is if you have a customer data on DynamoDB and you have customer Id as partition key but most of the requests are for a specific customer then customer Id partition will become hot partition. To avoid this, you can use salted partition keys, where you add some random value to partition key before storing, this will ensure that requests are spread across all partitions.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:2} --&gt;
+&lt;h2 id=&quot;consequences-of-bad-design&quot;&gt;Consequences of bad design&lt;/h2&gt;
+&lt;!-- /wp:heading {&quot;level&quot;:2} --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;There are consequences of wrong choice of partition keys. A wrong choice may lead to a specific partition to be accessed over and over again resulting in creating a so called “Hot partition”.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:3} --&gt;
+&lt;h4 id=&quot;hot-partition&quot;&gt;Hot Partition&lt;/h4&gt;
+&lt;!-- /wp:heading {&quot;level&quot;:3} --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Hot partition can occur when the access patterns of a single table design are not well-distributed across the table’s partition key, resulting in a disproportionate number of requests going to a single partition. This can cause performance issues, such as increased latency and throttling.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;A common cause of hot partitions is when the access pattern is not evenly distributed. For example, if most of the requests are for a specific partition key value then that partition will become hot.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:3} --&gt;
+&lt;h4 id=&quot;mitigation-techniques&quot;&gt;Mitigation techniques&lt;/h4&gt;
+&lt;!-- /wp:heading {&quot;level&quot;:3} --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;There are several ways to mitigate hot partitions in DynamoDB Single Table Design:
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Scaling:&lt;/strong&gt; One way to address hot partitions is to scale the read and write capacity of the table to handle the increased traffic.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Spread the access evenly:&lt;/strong&gt; By choosing an appropriate partition key and distributing the access patterns evenly across the partition key, you can reduce the likelihood of hot partitions.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Use advanced partitioning techniques:&lt;/strong&gt; By using advanced partitioning techniques like dynamic partitioning, where the partition key is computed at runtime based on the data, you can also reduce the likelihood of hot partitions. More on this a later.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Use Time To Live (TTL) attribute:&lt;/strong&gt; you can use DynamoDB’s TTL feature to automatically delete old data, which can help to avoid hot partitions caused by stale data.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Use read replicas:&lt;/strong&gt; If you are using a single table design and the read hot partition is a concern, you can make use of read replicas. This will replicate the data to multiple tables and read requests can be distributed across them.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:3} --&gt;
+&lt;h3 id=&quot;dynamic-partitioning&quot;&gt;Dynamic partitioning&lt;/h3&gt;
+&lt;!-- /wp:heading {&quot;level&quot;:3} --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Dynamic partitioning in DynamoDB is a technique that allows you to spread data across multiple partitions by changing the partition key based on the data. This can be useful when dealing with large amounts of data, or when you expect the access patterns to change over time.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;One way to achieve dynamic partitioning in DynamoDB is to use a computed partition key. For example, instead of using a simple partition key like a user ID, you could use a hash of the user ID combined with a timestamp. This way, new items with the same user ID will be spread across different partitions based on the timestamp, reducing the chance of a hot partition caused by a monotonically increasing partition key.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Another way to achieve dynamic partitioning is to use a partition key that is derived from the data. For example, if you are storing documents, you could use the first letter of the document title as the partition key. This way, the data will be spread across partitions based on the first letter of the title, and the access patterns will be evenly distributed.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Here is an example of how you could use dynamic partitioning to store tweets in DynamoDB:
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var date = DateTime.Now;
+var timestamp = date.Ticks;
+var tweetText = &quot;This is my tweet!&quot;;
+var tweetUserId = &quot;1001&quot;;
+
+using (var md5 = MD5.Create())
+{
+    var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(tweetUserId));
+    var partitionKey = $&quot;tweet_{BitConverter.ToString(hash).Replace(&quot;-&quot;, &quot;&quot;)}_{timestamp}&quot;;
+    var doc = new Document();
+    doc[&quot;partitionKey&quot;] = partitionKey;
+    doc[&quot;tweet&quot;] = tweetText;
+    doc[&quot;tweetUserId&quot;] = tweetUserId;
+    var client = new AmazonDynamoDBClient();
+    var request = new PutItemRequest
+    {
+        TableName = &quot;tweets&quot;,
+        Item = doc
+    };
+    var response = await client.PutItemAsync(request);
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;here the partition key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;partitionKey&lt;/code&gt; is generated by concatenating the hash of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tweetUserId&lt;/code&gt; and a timestamp. This ensures that tweets by the same tweet user are spread across different partitions based on the timestamp and not clustered on the same partition key, thus reducing the chance of hot partition.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:heading {&quot;level&quot;:2} --&gt;
+&lt;h2 id=&quot;when-to-avoid-single-table-design&quot;&gt;When to avoid single table design&lt;/h2&gt;
+&lt;!-- /wp:heading {&quot;level&quot;:3} --&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;While single table design in DynamoDB can be powerful and efficient for many types of applications, there are certain cases where it may not be the best choice. Here are a few examples of when a single table design might not be suitable:
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Applications with highly relational data:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;Single table design can work well for storing denormalized data, but if your data has complex relationships and you need to perform joins across tables, a single table design may not be the best option. In this case, it may be more appropriate to use a relational database like Amazon RDS or MySQL.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Applications with very high write loads:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;Single table design allows you to horizontally scale your read and write capacity, but if your application requires extremely high write loads, it may be more cost-effective to use a different storage solution that is optimized for write-intensive workloads, such as Amazon S3 or Amazon Redshift.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Applications that need advanced query capabilities:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;While single table design can support complex filtering and sorting using global secondary indexes and Elasticsearch, some applications may require more advanced querying capabilities like geospatial indexing and full-text search. In this case, it might be more appropriate to use a different database solution such as Amazon Elasticsearch service or Amazon RDS for PostgreSQL.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Applications that need to support very large items:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;DynamoDB has a limit of 400 KB for item size. If your item size is likely to exceed this limit, then you may need to consider using a different storage solution like Amazon S3 or Amazon Redshift&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Applications with unpredictable access patterns:&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;Single table design is based on the primary key, if the access patterns are not predictable it could lead to uneven distribution of the data and cause hot partitions. In this case, you might want to consider using a different database solution like Amazon RDS, which allows you to create read replicas to handle uneven read workloads.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;The article is quite long, however I believe I’ve just scratched the surface of this design technique. For further reading I would advise to refer to the &lt;a href=&quot;https://docs.aws.amazon.com/dynamodb/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-mce-href=&quot;https://docs.aws.amazon.com/dynamodb/index.html&quot;&gt;AWS documentation on DynamoDB&lt;/a&gt; and watch &lt;a href=&quot;https://www.youtube.com/watch?v=Xn12QSNa4RE&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-mce-href=&quot;https://www.youtube.com/watch?v=Xn12QSNa4RE&quot;&gt;this video&lt;/a&gt; (a bit lengthy, but worth watching) by Rick Houlihan where he explained the technique quite nicely.
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;
+
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Please &lt;a href=&quot;https://ashishvegaraju.com/contact&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-mce-href=&quot;https://ashishvegaraju.com/contact&quot;&gt;contact me&lt;/a&gt; if you have any questions on this topic and feel free to share it with others if you think it is useful!
+&lt;!-- /wp:paragraph --&gt;&lt;/p&gt;</content><author><name>avegaraju</name></author><category term="Single table design" /><category term="AWS" /><category term="dynamoDB" /><summary type="html"></summary></entry><entry><title type="html">Aws Dynamodb Single Table Design.md</title><link href="/2023/01/13/AWS-DynamoDB-Single-table-design.md/" rel="alternate" type="text/html" title="Aws Dynamodb Single Table Design.md" /><published>2023-01-13T00:00:00+01:00</published><updated>2023-01-13T00:00:00+01:00</updated><id>/2023/01/13/AWS-DynamoDB-Single-table-design.md</id><content type="html" xml:base="/2023/01/13/AWS-DynamoDB-Single-table-design.md/">&lt;head&gt;
+	
+&lt;/head&gt;
+&lt;body&gt;
+
+# &lt;span style=&quot;text-transform: capitalize&quot;&gt; AWS DynamoDb : A tale of single table
+
+&lt;span style=&quot;font-size:xx-large&quot;&gt;W&lt;/span&gt;hen it comes to designing a data store for your application, there are many options to choose from, each with its own set of advantages and disadvantages. One option that is gaining popularity among developers is using a single table of Amazon DynamoDB. Also, Amazon strongly recommends designing single table for most of the applications. We recently experimented with using a single table for one of our applications and this through this article, I will be sharing my experience. I will be discussing the advantages and limitations of using a single table design, as well as the best practices that I researched and learned along the way. We ended up using basic modeling techniques at work, however this article is intended to also share the research I did about some advanced single table design techniques and possible pitfalls. Whether you're just getting started with DynamoDB or are a seasoned developer, this article will provide valuable insights into how to effectively use a single table design. 
+
+Its always best to come to a common understanding of what is meant by single table design. So Let's start from basics:
+
+&lt;H2&gt;Introduction : What is Single table design&lt;/H2&gt;
+
+In DynamoDB, single-table design is a method of storing all data in a single table, rather than using multiple tables for different data types or use cases. This approach is achieved by using a composite primary key, which consists of both a partition key and a sort key.
+A composite primary key allows you to store multiple data types or entities in a single table, while still being able to retrieve and query data efficiently. 
+
+For example, imagine you have an e-commerce application and you want to store data about customers, orders, and products. With single-table design, you could store all of this data in a single DynamoDB table, using the partition key to distinguish between different types of data, and the sort key to sort data within each partition.
+Here's an example of how you might set up a table:
+
+```
+| partition key  | sort key     | other attributes|
+---------------------------------------------------
+| &quot;customer&quot;     | &quot;customer_id&quot;| name, address, etc|
+---------------------------------------------------
+| &quot;order&quot;        | &quot;order_id&quot;   | customer_id, total, etc |
+---------------------------------------------------
+| &quot;product&quot;      | &quot;product_id&quot; | name, price, etc       |
+
+```
+
+In this example, the partition key is &quot;entity&quot; and the sort key is &quot;entity_id&quot; . This table can have many other attributes like name, address, price etc. Using this structure, you can retrieve all orders  by using the &quot;order&quot; partition key and order_id as the sort key. Or you can retrieve all product details for a specific product by using &quot;product&quot; as the partition key and the product_id as the sort key.
+
+With basic definition out of our way, lets dive into the bend of mind that is required to design such a table. Before starting to design a table you have to come up with ways in which you'd like to access data from this table. This is commonly known as &quot;Access Pattern&quot;. In fact, in the previous paragraph what you read about retrieving data with the help of partition and sort keys are indeed access patterns. Coming up with access patterns at the beginning helps to model the table better.
+
+## Access Patterns explained
+
+Needless to say, just having a partition and sort key on a table cannot support all the possible access patterns. For instance, what if I want to retrieve all orders for a given customer. As you can see in the above table, there is no way you can query that information. This is where GSIs, short form for Global Secondary Index comes to rescue. 
+
+Let's take a look at GSIs and try to understand that with help of an example.
+
+### Global Secondary Indexes
+
+A global secondary index (GSI) in Amazon DynamoDB is a secondary index that has a different partition key than the primary key of the table. This allows you to create and maintain one or more secondary indexes on your DynamoDB table in addition to the primary index.
+
+Using the same example mentioned before, let's say you want to query all orders for a give customer_id then you might want to create a GSI on the table to support this access pattern. This GSI would have customer_id as the primary key. 
+
+&gt;I am using [No Sql Workbench](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/workbench.settingup.html &quot;NoSQL Workbench&quot;) to model the database table below. I highly recommend to use this tool for modeling, as it makes it easy to quickly visualize the changes made on the model.
+
+Pictures are worth 1000 words, so here is a screenshot of how the table is designed with primary and sort key with different attributes. 
+
+![image](../images/blog/table-with-attributes.jpg &quot;Basic table&quot;)
+
+Here is the screenshot of GSI to support the access pattern of accessing orders based on a customer_id
+
+![image](../images/blog/gsi-orders-by-customer.jpg &quot;GSI&quot;)
+
+I added some dummy data to show how the GSI was able to support our access pattern.
+
+![image](../images/blog/aggregate-view.jpg &quot;Aggregate View&quot;)
+
+As you can see, the GSI made customer id as the primary key and projected all other attributes related to order in this view.
+
+Similarly its is easy to create GSIs to support additional patterns in future.
+
+GSI is not the only way to support additional access patterns, there are two more ways to support additional access patterns:
+
+* Local Secondary Index (LSI): Similar to GSI but only allows to use the same partition key but different sort key. It can be useful if you only need to change the sort key and are okay with the queries always happening within a single partition.
+
+* Scans and Queries: Another option is to use the Scan and Query operations provided by DynamoDB. These operations allow you to retrieve data from your table based on any attribute, but they can be less efficient than using a well-designed index. Scans and queries can be useful when you need to perform ad-hoc queries or retrieve data that doesn't fit easily into a predefined index.
+
+* Dynamic Attributes: You can also make your schema more flexible by allowing dynamic attributes. This allows you to add arbitrary new attributes to your table, allowing you to store more information on your items, and potentially, enable new access patterns with it. For instance, you can create an attribute of type `map` and add data in the form of key value pairs. In the below schema, dynamic_attribute is a map and it can store any additional information that might be required about a customer
+
+```
+{
+    &quot;pk&quot;: &quot;customer#1&quot;,
+    &quot;sk&quot;: &quot;info&quot;,
+    &quot;name&quot;: &quot;John Smith&quot;,
+    &quot;email&quot;: &quot;john.smith@test.com&quot;,
+    &quot;dynamic_attribute&quot;: {
+        &quot;phoneNumber&quot;: &quot;+31 67777777&quot;,
+        &quot;address&quot;: &quot;123 some street, 3332AA&quot;
+    }
+}
+```
+
+**Note**
+
+It's important to keep in mind that adding new access patterns to an existing table can have an impact on the performance and cost of your application, so you should carefully evaluate any changes you make. For example, creating new GSIs can increase the amount of data stored in your table and the read/write capacity needed to support them.
+
+
+## Guidance for creating partition key for high volume applications
+
+When you choose an appropriate partition key, it should be chosen in such a way that it naturally distributes the requests across partitions in an even manner. This can be achieved by choosing a partition key that has a high cardinality, meaning that it has a large number of unique values. This will ensure that the requests are spread across multiple partitions and reduce the chance of a hot partition (more about this is explained below).
+
+For example, if you have an e-commerce application and want to store information about different products, you could choose the product id as a partition key. This would ensure that the requests for different products are spread across different partitions and would reduce the chance of a hot partition.
+
+Another example is if you have a customer data on DynamoDB and you have customer Id as partition key but most of the requests are for a specific customer then customer Id partition will become hot partition. To avoid this, you can use salted partition keys, where you add some random value to partition key before storing, this will ensure that requests are spread across all partitions.
+
+
+## Consequences of bad design
+
+There are consequences of wrong choice of partition keys. A wrong choice may lead to a specific partition to be accessed over and over again resulting in creating a so called &quot;Hot partition&quot;.
+
+#### Hot Partition
+
+Hot partition can occur when the access patterns of a single table design are not well-distributed across the table's partition key, resulting in a disproportionate number of requests going to a single partition. This can cause performance issues, such as increased latency and throttling.
+
+A common cause of hot partitions is when the partition key is not chosen or used correctly. For example, if the partition key is chosen based on a monotonically increasing value, such as a timestamp, then all new items will be added to the same partition, causing a hot partition.
+
+Another common cause of hot partitions is when the access pattern is not evenly distributed. For example, if most of the requests are for a specific partition key value then that partition will become hot.
+
+#### Mitigation techniques
+
+There are several ways to mitigate hot partitions in DynamoDB Single Table Design:
+
+* **Scaling:** One way to address hot partitions is to scale the read and write capacity of the table to handle the increased traffic.
+
+* **Spread the access evenly:** By choosing an appropriate partition key and distributing the access patterns evenly across the partition key, you can reduce the likelihood of hot partitions.
+
+* **Use advanced partitioning techniques:** By using advanced partitioning techniques like dynamic partitioning, where the partition key is computed at runtime based on the data, you can also reduce the likelihood of hot partitions. More on this a later.
+
+* **Use Time To Live (TTL) attribute:** you can use DynamoDB's TTL feature to automatically delete old data, which can help to avoid hot partitions caused by stale data.
+
+* **Use read replicas:** If you are using a single table design and the read hot partition is a concern, you can make use of read replicas. This will replicate the data to multiple tables and read requests can be distributed across them.
+
+
+### Dynamic partitioning
+
+Dynamic partitioning in DynamoDB is a technique that allows you to spread data across multiple partitions by changing the partition key based on the data. This can be useful when dealing with large amounts of data, or when you expect the access patterns to change over time.
+
+One way to achieve dynamic partitioning in DynamoDB is to use a computed partition key. For example, instead of using a simple partition key like a user ID, you could use a hash of the user ID combined with a timestamp. This way, new items with the same user ID will be spread across different partitions based on the timestamp, reducing the chance of a hot partition caused by a monotonically increasing partition key.
+
+Another way to achieve dynamic partitioning is to use a partition key that is derived from the data. For example, if you are storing documents, you could use the first letter of the document title as the partition key. This way, the data will be spread across partitions based on the first letter of the title, and the access patterns will be evenly distributed.
+
+Here is an example of how you could use dynamic partitioning to store product reviews in DynamoDB:
+
+```
+using Amazon.DynamoDBv2.DocumentModel;
+using Amazon.DynamoDBv2.Model;
+using Amazon.Runtime;
+using System;
+using System.Security.Cryptography;
+using System.Text;
+
+var date = DateTime.Now;
+var timestamp = date.Ticks;
+var productId = &quot;1001&quot;;
+var review = &quot;This is my product review!&quot;;
+var reviewerId = &quot;2002&quot;;
+
+using (var md5 = MD5.Create())
+{
+    var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(reviewerId));
+    var partitionKey = $&quot;product_review_{BitConverter.ToString(hash).Replace(&quot;-&quot;, &quot;&quot;)}_{timestamp}&quot;;
+    var doc = new Document();
+    doc[&quot;partitionKey&quot;] = partitionKey;
+    doc[&quot;review&quot;] = review;
+    doc[&quot;product_id&quot;] = productId;
+    doc[&quot;reviewer_id&quot;] = reviewerId;
+    var client = new AmazonDynamoDBClient();
+    var request = new PutItemRequest
+    {
+        TableName = &quot;reviews&quot;,
+        Item = doc
+    };
+    var response = await client.PutItemAsync(request);
+    if (response.HttpStatusCode == System.Net.HttpStatusCode.OK)
+    {
+        Console.WriteLine(&quot;Success&quot;);
+    }
+    else
+    {
+        Console.WriteLine(&quot;Error: &quot; + response.HttpStatusCode);
+    }
+}
+
+```
+
+In this example, the partition key partitionKey is generated by concatenating the hash of the reviewer id and a timestamp. This ensures that reviews for the same product and by the same reviewer are spread across different partitions based on the timestamp and not clustered on the same partition key, thus reducing the chance of hot partition.
+
+
+## When to avoid single table design
+
+While single table design in DynamoDB can be powerful and efficient for many types of applications, there are certain cases where it may not be the best choice. Here are a few examples of when a single table design might not be suitable:
+
+* **Applications with highly relational data:**
+
+	Single table design can work well for storing denormalized data, but if your data has complex relationships and you need to perform joins across tables, a single table design may not be the best option. In this case, it may be more appropriate to use a relational database like Amazon RDS or MySQL.
+	
+* **Applications with very high write loads:** 
+
+	Single table design allows you to horizontally scale your read and write capacity, but if your application requires extremely high write loads, it may be more cost-effective to use a different storage solution that is optimized for write-intensive workloads, such as Amazon S3 or Amazon Redshift.
+	
+* **Applications that need advanced query capabilities:** 
+
+	While single table design can support complex filtering and sorting using global secondary indexes and Elasticsearch, some applications may require more advanced querying capabilities like geospatial indexing and full-text search. In this case, it might be more appropriate to use a different database solution such as Amazon Elasticsearch service or Amazon RDS for PostgreSQL.
+	
+* **Applications that need to support very large items:** 
+
+	DynamoDB has a limit of 400 KB for item size. If your item size is likely to exceed this limit, then you may need to consider using a different storage solution like Amazon S3 or Amazon Redshift
+	
+* **Applications with unpredictable access patterns:**
+
+	Single table design is based on the primary key, if the access patterns are not predictable it could lead to uneven distribution of the data and cause hot partitions. In this case, you might want to consider using a different database solution like Amazon RDS, which allows you to create read replicas to handle uneven read workloads.
+
+&lt;/body&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Test doubles ; Over the wire</title><link href="/2019/03/01/test-doubles-over-the-wire/" rel="alternate" type="text/html" title="Test doubles ; Over the wire" /><published>2019-03-01T00:09:00+01:00</published><updated>2019-03-01T00:09:00+01:00</updated><id>/2019/03/01/test-doubles-over-the-wire</id><content type="html" xml:base="/2019/03/01/test-doubles-over-the-wire/">&lt;!-- wp:paragraph {&quot;customFontSize&quot;:12} --&gt;
 &lt;p style=&quot;font-size:12px;&quot;&gt;&lt;strong&gt;Please note&lt;/strong&gt;: If the code snippets in this article are not visible on your mobile browser then try to view this article with &lt;em&gt;Desktop site&lt;/em&gt; option enabled.&lt;/p&gt;
 &lt;!-- /wp:paragraph --&gt;
 
