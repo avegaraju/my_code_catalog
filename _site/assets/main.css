@@ -137,7 +137,7 @@ table td { border: 1px solid #e8e8e8; }
 
 @media screen and (max-width: 800px) { .post-title { font-size: 36px; } }
 
-.post-content { margin-bottom: 30px; }
+.post-content { margin-bottom: 30px; text-align: justify;}
 
 .post-content h2 { font-size: 32px; }
 

@@ -6,8 +6,13 @@ author: avegaraju
 comments: true
 categories: [AWS, appsync, graphql]
 ---
-# Welcome to StackEdit!
+# AWS Appsync adventure
 
+AWS Appsync is a GraphQL offerring of AWS. It allows to create a unified API that acts as a gateway to connect to a variety of datasources ranging from DynamoDB, RDS, Lambdas, API Gateway etc. I was using AWS appsync for slightly over a year for one of my personal projects and I have come to appreciate the overall versatility and robustness of this service. In this article I aim to share my learnings, insights and some pain points in the hope that my readers can make an informed decision whether this offerring is a good fit for their project or not.
+
+
+
+I was using AWS appsync for one of my personal projects  
 Hi! I'm your first Markdown file in **StackEdit**. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the **file explorer** on the left corner of the navigation bar.
 
 
